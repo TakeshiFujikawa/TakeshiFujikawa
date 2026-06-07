@@ -426,6 +426,57 @@ body {
 }
 .photo-frame .hint { opacity: 0.92; font-weight: 600; letter-spacing: 0.01em; }
 
+/* ---------- Auto-fill flow strip ---------- */
+
+.auto-flow {
+  display: flex;
+  align-items: flex-start;
+  margin: 2px 0 16px;
+}
+.auto-flow .step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+.auto-flow .step .dot {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--teal-600);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800;
+  margin: 0 auto 6px;
+  box-shadow: 0 6px 14px -6px rgba(42,147,121,0.55);
+  position: relative;
+  z-index: 2;
+}
+.auto-flow .step .lbl {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+.auto-flow .step::after {
+  content: "";
+  position: absolute;
+  top: 13px; left: 50%;
+  width: 100%; height: 2px;
+  background: var(--teal-100);
+  z-index: 1;
+}
+.auto-flow .step:last-child::after { display: none; }
+.auto-flow .caption {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--teal-700);
+  background: var(--teal-50);
+  border: 1px solid var(--teal-100);
+  border-radius: 999px;
+  padding: 6px 14px;
+  display: inline-block;
+}
+
 /* ---------- Suggestion list ---------- */
 
 .suggestion-item {
