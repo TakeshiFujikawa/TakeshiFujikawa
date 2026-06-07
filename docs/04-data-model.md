@@ -12,8 +12,13 @@
 | activity_level | 普段の活動量（座りがち〜高活動） |
 | allergies[] | アレルギー食材リスト（**献立提案で最優先に参照**） |
 | dietary_restrictions[] | ベジタリアン／ヴィーガン／ハラール等の食事制限 |
-| health_goal | 減量／維持／増量・筋肉量アップ |
-| target_weight, target_date | 体重目標（1つだけ保持しシンプルに保つ） |
+| health_goal | 減量／維持／増量・筋肉量アップ／**減量＋筋力アップ（ボディリコンポジション）** |
+| program_start_date, program_period | プログラム開始日・期間（例：2026-05-30 起算で1年間） |
+| target_weight_delta, target_date | 目標とする体重の増減幅・達成目標日（1つだけ保持しシンプルに保つ。例：-15kg／2027-05-30） |
+
+> 例（本アプリが主軸とする「2026年5月30日からの健康管理プログラム」）：
+> `health_goal = 減量＋筋力アップ`、`program_start_date = 2026-05-30`、
+> `program_period = 1年間`、`target_weight_delta = -15kg`
 
 ## ConditionScore（日次コンディションスコア）
 
