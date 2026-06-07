@@ -8,40 +8,69 @@
 </head>
 <body>
 <div class="phone">
-  <div class="statusbar"></div>
+  <div class="statusbar">
+    <div class="notch"></div>
+    <span>9:41</span>
+    <div class="icons">
+      <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><rect x="0" y="7" width="3" height="4" rx="1" fill="currentColor"/><rect x="4.5" y="5" width="3" height="6" rx="1" fill="currentColor"/><rect x="9" y="3" width="3" height="8" rx="1" fill="currentColor"/><rect x="13" y="0" width="3" height="11" rx="1" fill="currentColor"/></svg>
+      <svg width="15" height="11" viewBox="0 0 15 11" fill="none"><path d="M7.5 9.5a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4zM4.8 6.7a4 4 0 015.4 0L8.9 8.2a2 2 0 00-2.6 0L4.8 6.7zM2.3 4.2a7.6 7.6 0 0110.4 0L11.3 5.7a5.6 5.6 0 00-7.6 0L2.3 4.2z" fill="currentColor"/></svg>
+      <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor"/><rect x="2" y="2" width="16" height="8" rx="1.5" fill="currentColor"/><rect x="21.5" y="3.5" width="2" height="5" rx="1" fill="currentColor"/></svg>
+    </div>
+  </div>
+
   <div class="screen">
     <div class="appbar">
-      <h1>走る</h1>
-      <div class="icon">📍</div>
+      <div>
+        <p class="eyebrow">GPSで自動計測</p>
+        <h1>走る</h1>
+      </div>
+      <a class="icon-btn" href="#" aria-label="履歴">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 4v5h5M3 9a9 9 0 1018 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
     <div class="content">
 
-      <div class="section-title">記録中（GPS計測）</div>
+      <div class="section-title">記録中 <span class="pill warn" style="font-weight:800;">● LIVE</span></div>
       <div class="card">
-        <div class="run-stats">
+        <div class="stat-strip">
           <div class="item"><div class="num">18:42</div><div class="lab">経過時間</div></div>
-          <div class="item"><div class="num">3.2<span style="font-size:13px;">km</span></div><div class="lab">距離</div></div>
-          <div class="item"><div class="num">5'51"</div><div class="lab">平均ペース /km</div></div>
+          <div class="div"></div>
+          <div class="item"><div class="num">3.2<small> km</small></div><div class="lab">距離</div></div>
+          <div class="div"></div>
+          <div class="item"><div class="num">5'51<small>"</small></div><div class="lab">平均ペース /km</div></div>
         </div>
-        <div class="start-btn">
-          <span class="big">■ 終了</span>
-          <span class="small">タップして記録を終了</span>
+
+        <div class="run-stage">
+          <div class="start-btn">
+            <span class="big">■ 終了</span>
+            <span class="small">タップして記録を終了</span>
+          </div>
+          <span class="pill muted tag">種目：ラン（自動判定）</span>
         </div>
-        <div style="text-align:center; font-size:12px; color:var(--muted);">種目：ラン（自動判定）</div>
       </div>
 
       <div class="section-title">終了後のサマリー（イメージ）</div>
       <div class="card">
-        <div class="map-placeholder"></div>
+        <div class="map-placeholder">
+          <svg viewBox="0 0 320 188" fill="none">
+            <path d="M40 150 C 90 80, 140 170, 190 90 S 280 60, 290 40"
+              stroke="#2a9379" stroke-width="4" stroke-linecap="round" fill="none" stroke-dasharray="2 10"/>
+          </svg>
+          <span class="pin" style="left:34px; top:144px;"></span>
+          <span class="pin" style="left:284px; top:34px; background:var(--teal-700);"></span>
+        </div>
         <div class="row">
-          <span style="font-size:13px;">推定消費カロリー</span>
-          <span class="pill">約 240kcal</span>
+          <span style="font-size:13px; font-weight:700; font-family:'Noto Sans JP',sans-serif;">推定消費カロリー</span>
+          <span class="pill coral">🔥 約 240kcal</span>
         </div>
-        <div style="font-size:12px;color:var(--muted); margin-top:8px; line-height:1.7;">
-          記録後、消費カロリーは自動的に「今日の摂取バランス」「献立提案」に反映されます。
-          ルートや実績の詳細は「もっと見る」から確認できます（メイン導線には出しません）。
+        <div style="font-size:12px;color:var(--ink-soft); margin-top:10px; line-height:1.8; font-weight:500;">
+          記録後、消費カロリーは自動的に「今日の摂取バランス」と「献立提案」に反映されます。
+          ルートや実績の詳細は履歴アイコンから確認できます（メイン導線はシンプルに保ちます）。
         </div>
-        <a class="btn-secondary" href="meal.html">この記録を踏まえた食事提案を見る →</a>
+        <a class="btn-secondary" href="meal.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 10l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(180 12 12)"/></svg>
+          この記録を踏まえた食事提案を見る
+        </a>
       </div>
 
     </div>

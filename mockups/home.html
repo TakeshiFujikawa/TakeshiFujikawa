@@ -8,26 +8,72 @@
 </head>
 <body>
 <div class="phone">
-  <div class="statusbar"></div>
+  <div class="statusbar">
+    <div class="notch"></div>
+    <span>9:41</span>
+    <div class="icons">
+      <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><rect x="0" y="7" width="3" height="4" rx="1" fill="currentColor"/><rect x="4.5" y="5" width="3" height="6" rx="1" fill="currentColor"/><rect x="9" y="3" width="3" height="8" rx="1" fill="currentColor"/><rect x="13" y="0" width="3" height="11" rx="1" fill="currentColor"/></svg>
+      <svg width="15" height="11" viewBox="0 0 15 11" fill="none"><path d="M7.5 9.5a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4zM4.8 6.7a4 4 0 015.4 0L8.9 8.2a2 2 0 00-2.6 0L4.8 6.7zM2.3 4.2a7.6 7.6 0 0110.4 0L11.3 5.7a5.6 5.6 0 00-7.6 0L2.3 4.2z" fill="currentColor"/></svg>
+      <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor"/><rect x="2" y="2" width="16" height="8" rx="1.5" fill="currentColor"/><rect x="21.5" y="3.5" width="2" height="5" rx="1" fill="currentColor"/></svg>
+    </div>
+  </div>
+
   <div class="screen">
     <div class="appbar">
-      <h1>VitaOne</h1>
-      <div class="icon">⚙️</div>
+      <div>
+        <p class="eyebrow">Day 8 / 365 ・ 健康管理プログラム</p>
+        <h1>おはようございます</h1>
+      </div>
+      <a class="icon-btn" href="#" aria-label="設定">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 15.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" stroke="currentColor" stroke-width="1.8"/><path d="M19.4 13.5c.04-.3.06-.66.06-1s-.02-.7-.06-1l2.1-1.65a.5.5 0 00.12-.64l-2-3.46a.5.5 0 00-.6-.22l-2.5 1a7.6 7.6 0 00-1.7-1l-.38-2.65A.5.5 0 0014 2.4h-4a.5.5 0 00-.5.43L9.1 5.5a7.6 7.6 0 00-1.7 1l-2.5-1a.5.5 0 00-.6.22l-2 3.46a.5.5 0 00.12.64l2.1 1.65c-.04.3-.06.66-.06 1s.02.7.06 1l-2.1 1.65a.5.5 0 00-.12.64l2 3.46c.13.22.4.31.6.22l2.5-1c.52.42 1.1.76 1.7 1l.38 2.65c.05.25.27.43.5.43h4c.25 0 .45-.18.5-.43l.38-2.65c.6-.24 1.18-.58 1.7-1l2.5 1c.22.09.48 0 .6-.22l2-3.46a.5.5 0 00-.12-.64l-2.1-1.65z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      </a>
     </div>
+
     <div class="content">
 
       <div class="score-card">
-        <div class="label">今日のコンディション（6/7・日）・健康管理プログラム 8日目 / 365日</div>
-        <div class="score">78<span> / 100</span></div>
-        <span class="badge">good：今日は積極的に動ける状態です</span>
+        <div class="score-top">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 96 96">
+              <circle class="ring-bg" cx="48" cy="48" r="42" fill="none" stroke-width="8"/>
+              <circle class="ring-fg" cx="48" cy="48" r="42" fill="none" stroke-width="8"
+                stroke-dasharray="263.9" stroke-dashoffset="58"/>
+            </svg>
+            <div class="ring-center">
+              <div class="num">78</div>
+              <div class="max">/ 100</div>
+            </div>
+          </div>
+          <div class="meta">
+            <div class="label">今日のコンディション</div>
+            <span class="badge"><span class="dot"></span>Good — 積極的に動ける状態です</span>
+          </div>
+        </div>
+
         <div class="comment">
           昨晩はよく眠れていて、回復は十分。運動の負荷も無理のない範囲に収まっています。
-          少しペースを上げても大丈夫そうです。
+          今日は少しペースを上げても大丈夫そうです。
         </div>
+
         <div class="subscores">
-          <div class="subscore"><div class="name">💤 回復</div><div class="val">82</div></div>
-          <div class="subscore"><div class="name">🏃 活動</div><div class="val">70</div></div>
-          <div class="subscore"><div class="name">🍽 栄養</div><div class="val">80</div></div>
+          <div class="subscore">
+            <div class="ico">💤</div>
+            <div class="name">回復</div>
+            <div class="val">82</div>
+            <div class="bar"><i style="width:82%"></i></div>
+          </div>
+          <div class="subscore">
+            <div class="ico">🏃</div>
+            <div class="name">活動</div>
+            <div class="val">70</div>
+            <div class="bar"><i style="width:70%"></i></div>
+          </div>
+          <div class="subscore">
+            <div class="ico">🍽</div>
+            <div class="name">栄養</div>
+            <div class="val">80</div>
+            <div class="bar"><i style="width:80%"></i></div>
+          </div>
         </div>
       </div>
 
@@ -36,12 +82,12 @@
         <div class="emoji">🏃</div>
         <div>
           <div class="title">軽めのジョグ 20分</div>
-          <div class="desc">回復は十分なので、強度高めの運動も選べます。今日は気分に合わせて軽くジョグを。</div>
+          <div class="desc">回復は十分なので、強度高めの運動も選べます。気分に合わせて軽くジョグから始めましょう。</div>
           <a class="btn-secondary" href="run.html">走る画面を開く →</a>
         </div>
       </div>
 
-      <div class="card action-card">
+      <div class="card action-card amber">
         <div class="emoji">🍽</div>
         <div>
           <div class="title">次の食事は高たんぱく＆野菜多めに</div>
@@ -50,21 +96,21 @@
         </div>
       </div>
 
-      <div class="section-title">今週の記録</div>
+      <div class="section-title">今週の記録 <span class="more">すべて見る ›</span></div>
       <div class="card">
         <div class="row">
-          <span class="pill">体重</span>
-          <span style="font-size:13px;color:var(--muted)">68.4kg（▲0.3kg / 1週間）</span>
+          <span class="pill">⚖️ 体重</span>
+          <span style="font-size:12.5px;color:var(--ink-soft);font-weight:600;">68.4kg <span style="color:var(--teal-600);">▲0.3kg</span> / 1週間</span>
         </div>
         <div class="divider"></div>
         <div class="row">
-          <span class="pill">睡眠</span>
-          <span style="font-size:13px;color:var(--muted)">平均 7時間12分（質：良好）</span>
+          <span class="pill">💤 睡眠</span>
+          <span style="font-size:12.5px;color:var(--ink-soft);font-weight:600;">平均 7時間12分・質：良好</span>
         </div>
         <div class="divider"></div>
         <div class="row">
-          <span class="pill">運動</span>
-          <span style="font-size:13px;color:var(--muted)">今週 3回・計 87分</span>
+          <span class="pill">🏃 運動</span>
+          <span style="font-size:12.5px;color:var(--ink-soft);font-weight:600;">今週 3回・計 87分</span>
         </div>
       </div>
 

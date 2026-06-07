@@ -8,49 +8,74 @@
 </head>
 <body>
 <div class="phone">
-  <div class="statusbar"></div>
+  <div class="statusbar">
+    <div class="notch"></div>
+    <span>9:41</span>
+    <div class="icons">
+      <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><rect x="0" y="7" width="3" height="4" rx="1" fill="currentColor"/><rect x="4.5" y="5" width="3" height="6" rx="1" fill="currentColor"/><rect x="9" y="3" width="3" height="8" rx="1" fill="currentColor"/><rect x="13" y="0" width="3" height="11" rx="1" fill="currentColor"/></svg>
+      <svg width="15" height="11" viewBox="0 0 15 11" fill="none"><path d="M7.5 9.5a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4zM4.8 6.7a4 4 0 015.4 0L8.9 8.2a2 2 0 00-2.6 0L4.8 6.7zM2.3 4.2a7.6 7.6 0 0110.4 0L11.3 5.7a5.6 5.6 0 00-7.6 0L2.3 4.2z" fill="currentColor"/></svg>
+      <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor"/><rect x="2" y="2" width="16" height="8" rx="1.5" fill="currentColor"/><rect x="21.5" y="3.5" width="2" height="5" rx="1" fill="currentColor"/></svg>
+    </div>
+  </div>
+
   <div class="screen">
     <div class="appbar">
-      <h1>トレンド</h1>
-      <div class="icon">🗓</div>
+      <div>
+        <p class="eyebrow">5/31 〜 6/6 の振り返り</p>
+        <h1>トレンド</h1>
+      </div>
+      <a class="icon-btn" href="#" aria-label="期間切替">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="15" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 9.5h17M8 3v3M16 3v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </a>
     </div>
     <div class="content">
 
-      <div class="section-title">今週のサマリー（5/31〜6/6）</div>
+      <div class="section-title">今週のサマリー</div>
       <div class="card">
-        <div class="row" style="margin-bottom:4px;">
-          <span style="font-weight:700;">コンディションスコアの推移</span>
+        <div class="row" style="margin-bottom:2px;">
+          <span style="font-weight:800; font-size:14.5px; font-family:'Noto Sans JP',sans-serif;">コンディションスコアの推移</span>
           <span class="pill">平均 74</span>
         </div>
         <div class="trend-line">
-          <svg viewBox="0 0 300 90" preserveAspectRatio="none">
-            <polyline points="0,60 50,50 100,58 150,38 200,42 250,30 300,26"
-              fill="none" stroke="#2f7d6b" stroke-width="3" stroke-linecap="round"/>
+          <svg viewBox="0 0 300 96" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#2a9379" stop-opacity="0.22"/>
+                <stop offset="1" stop-color="#2a9379" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,62 50,52 100,60 150,40 200,44 250,32 300,28 V96 H0 Z" fill="url(#g2)"/>
+            <polyline points="0,62 50,52 100,60 150,40 200,44 250,32 300,28"
+              fill="none" stroke="#2a9379" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="300" cy="28" r="4.5" fill="#2a9379" stroke="#fff" stroke-width="2"/>
           </svg>
         </div>
         <div class="divider"></div>
-        <div style="font-size:13px; line-height:1.8;">
-          <strong>👍 今週よかったこと</strong><br>
-          <span style="color:var(--muted);">睡眠時間が安定し、回復スコアが週を通して高めでした。運動も無理のないペースで継続できています。</span>
+        <div style="font-size:12.5px; line-height:1.8;">
+          <div style="font-weight:700; font-family:'Noto Sans JP',sans-serif; margin-bottom:2px;">👍 今週よかったこと</div>
+          <span style="color:var(--ink-soft);">睡眠時間が安定し、回復スコアが週を通して高めでした。運動も無理のないペースで継続できています。</span>
         </div>
-        <div style="font-size:13px; line-height:1.8; margin-top:10px;">
-          <strong>🎯 来週に向けて</strong><br>
-          <span style="color:var(--muted);">夕食の栄養バランスにやや偏りが見られました。野菜多めの献立提案を活用してみましょう。</span>
+        <div style="font-size:12.5px; line-height:1.8; margin-top:12px;">
+          <div style="font-weight:700; font-family:'Noto Sans JP',sans-serif; margin-bottom:2px;">🎯 来週に向けて</div>
+          <span style="color:var(--ink-soft);">夕食の栄養バランスにやや偏りが見られました。野菜多めの献立提案を活用してみましょう。</span>
         </div>
       </div>
 
       <div class="section-title">主要指標</div>
-      <div class="card">
-        <div class="row"><span class="pill">体重</span><span style="font-size:13px;color:var(--muted);">68.4kg（▲0.3kg）</span></div>
-        <div class="divider"></div>
-        <div class="row"><span class="pill">運動</span><span style="font-size:13px;color:var(--muted);">3回・計87分・消費 約720kcal</span></div>
-        <div class="divider"></div>
-        <div class="row"><span class="pill">睡眠</span><span style="font-size:13px;color:var(--muted);">平均 7時間12分</span></div>
-        <div class="divider"></div>
-        <div class="row"><span class="pill">食事</span><span style="font-size:13px;color:var(--muted);">記録日数 7/7・栄養バランス 良好</span></div>
+      <div class="card" style="font-size:12.5px;">
+        <div class="row" style="padding:7px 0;"><span class="pill">⚖️ 体重</span><span style="font-weight:700;">68.4kg <span style="color:var(--teal-600);">▲0.3kg</span></span></div>
+        <div class="divider" style="margin:2px 0;"></div>
+        <div class="row" style="padding:7px 0;"><span class="pill">🏃 運動</span><span style="font-weight:700;">3回・計87分・約720kcal</span></div>
+        <div class="divider" style="margin:2px 0;"></div>
+        <div class="row" style="padding:7px 0;"><span class="pill">💤 睡眠</span><span style="font-weight:700;">平均 7時間12分</span></div>
+        <div class="divider" style="margin:2px 0;"></div>
+        <div class="row" style="padding:7px 0;"><span class="pill">🍽 食事</span><span style="font-weight:700;">記録 7/7日・バランス良好</span></div>
       </div>
 
-      <a class="btn-secondary" href="trend.html">詳細グラフを開く（折りたたみ）</a>
+      <a class="btn-secondary" href="trend.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8M21 7v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        詳細グラフを開く
+      </a>
 
     </div>
 

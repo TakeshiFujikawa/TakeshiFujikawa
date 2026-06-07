@@ -8,67 +8,93 @@
 </head>
 <body>
 <div class="phone">
-  <div class="statusbar"></div>
+  <div class="statusbar">
+    <div class="notch"></div>
+    <span>9:41</span>
+    <div class="icons">
+      <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><rect x="0" y="7" width="3" height="4" rx="1" fill="currentColor"/><rect x="4.5" y="5" width="3" height="6" rx="1" fill="currentColor"/><rect x="9" y="3" width="3" height="8" rx="1" fill="currentColor"/><rect x="13" y="0" width="3" height="11" rx="1" fill="currentColor"/></svg>
+      <svg width="15" height="11" viewBox="0 0 15 11" fill="none"><path d="M7.5 9.5a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4zM4.8 6.7a4 4 0 015.4 0L8.9 8.2a2 2 0 00-2.6 0L4.8 6.7zM2.3 4.2a7.6 7.6 0 0110.4 0L11.3 5.7a5.6 5.6 0 00-7.6 0L2.3 4.2z" fill="currentColor"/></svg>
+      <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor"/><rect x="2" y="2" width="16" height="8" rx="1.5" fill="currentColor"/><rect x="21.5" y="3.5" width="2" height="5" rx="1" fill="currentColor"/></svg>
+    </div>
+  </div>
+
   <div class="screen">
     <div class="appbar">
-      <h1>記録</h1>
-      <div class="icon">🔗</div>
+      <div>
+        <p class="eyebrow">からだのデータ（自動連携）</p>
+        <h1>記録</h1>
+      </div>
+      <a class="icon-btn" href="#" aria-label="連携設定">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12a3 3 0 106 0 3 3 0 00-6 0z" stroke="currentColor" stroke-width="1.7"/><path d="M4 12h2M18 12h2M12 4v2M12 18v2M6.3 6.3l1.4 1.4M16.3 16.3l1.4 1.4M17.7 6.3l-1.4 1.4M7.7 16.3l-1.4 1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
     </div>
     <div class="content">
 
-      <div class="section-title">からだのデータ（自動連携）</div>
+      <div class="section-title">体組成</div>
       <div class="card">
         <div class="row">
           <div>
-            <div style="font-weight:700; font-size:20px;">68.4 kg</div>
-            <div style="font-size:12px; color:var(--muted); margin-top:2px;">体脂肪率 21.3%・前週比 ▲0.3kg</div>
+            <div style="font-family:'Noto Sans JP',sans-serif; font-weight:800; font-size:24px; letter-spacing:-0.02em;">68.4<span style="font-size:14px; font-weight:600; color:var(--ink-soft);"> kg</span></div>
+            <div style="font-size:11.5px; color:var(--ink-soft); margin-top:3px; font-weight:600;">体脂肪率 21.3% ・ 前週比 <span style="color:var(--teal-600);">▲0.3kg</span></div>
           </div>
-          <span class="pill">スマート体組成計と連携中</span>
+          <span class="pill">⚖️ 連携中</span>
         </div>
         <div class="trend-line">
-          <svg viewBox="0 0 300 90" preserveAspectRatio="none">
-            <polyline points="0,55 40,50 80,52 120,46 160,48 200,40 240,42 300,30"
-              fill="none" stroke="#2f7d6b" stroke-width="3" stroke-linecap="round"/>
+          <svg viewBox="0 0 300 96" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#2a9379" stop-opacity="0.22"/>
+                <stop offset="1" stop-color="#2a9379" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,58 40,52 80,55 120,48 160,50 200,40 240,43 300,30 V96 H0 Z" fill="url(#g1)"/>
+            <polyline points="0,58 40,52 80,55 120,48 160,50 200,40 240,43 300,30"
+              fill="none" stroke="#2a9379" stroke-width="3" stroke-linecap="round"/>
           </svg>
         </div>
-        <div style="font-size:11px; color:var(--muted); text-align:right;">直近4週間の体重推移</div>
+        <div style="font-size:10.5px; color:var(--ink-soft); text-align:right; font-weight:600;">直近4週間の体重推移</div>
       </div>
 
-      <div class="section-title">睡眠（ウェアラブル連携）</div>
+      <div class="section-title">睡眠・心拍 <span class="more">⌚ ウェアラブル連携</span></div>
       <div class="card">
         <div class="row">
-          <span style="font-size:13px;">昨晩の睡眠</span>
-          <span class="pill">7時間28分・質：良好</span>
+          <span class="pill">💤 昨晩の睡眠</span>
+          <span style="font-size:12.5px; font-weight:700;">7時間28分 <span style="color:var(--ink-soft); font-weight:500;">・質：良好</span></span>
         </div>
         <div class="divider"></div>
         <div class="row">
-          <span style="font-size:13px;">安静時心拍</span>
-          <span style="font-size:13px;color:var(--muted);">52 bpm（先週平均：54 bpm）</span>
+          <span class="pill">❤️ 安静時心拍</span>
+          <span style="font-size:12.5px; font-weight:700;">52 bpm <span style="color:var(--ink-soft); font-weight:500;">（先週平均 54 bpm）</span></span>
         </div>
       </div>
 
       <div class="section-title">目標（ひとつだけ）</div>
-      <div class="card action-card">
+      <div class="card action-card coral">
         <div class="emoji">🎯</div>
         <div>
-          <div class="title">1年で -15kg、同時に筋力アップ</div>
+          <div class="title">1年で −15kg、同時に筋力アップ</div>
           <div class="desc">
-            健康管理プログラム：2026/5/30 〜 2027/5/30（開始から8日目）<br>
-            現在 68.4kg → 目標 53.4kg（経過 2%）
+            健康管理プログラム　2026.5.30 → 2027.5.30　<span style="color:var(--teal-600); font-weight:700;">Day 8</span><br>
+            現在 68.4kg → 目標 53.4kg
           </div>
-          <div class="bar-track"><div class="bar-fill" style="width:2%;"></div></div>
-          <div style="font-size:11px; color:var(--muted); margin-top:8px; line-height:1.6;">
-            ※「減量」と「筋力アップ」を同時に狙う目標のため、体重だけでなく
+          <div class="row" style="margin-top:10px;">
+            <div class="bar-track" style="flex:1; margin-top:0;"><div class="bar-fill" style="width:2%;"></div></div>
+            <span style="font-size:11px; font-weight:800; color:var(--teal-700);">2%</span>
+          </div>
+          <div style="font-size:10.5px; color:var(--ink-soft); margin-top:10px; line-height:1.7; font-weight:500;">
+            「減量」と「筋力アップ」を同時に狙う目標のため、体重だけでなく
             体脂肪率・筋肉量の推移も併せて確認できるようにしています。
           </div>
         </div>
       </div>
 
       <div class="section-title">連携デバイス</div>
-      <div class="card" style="font-size:13px; line-height:2.2;">
-        <div class="row"><span>⌚ ウェアラブル端末</span><span class="pill">連携済み</span></div>
-        <div class="row"><span>⚖️ スマート体組成計</span><span class="pill">連携済み</span></div>
-        <div class="row"><span>📍 GPS（ラン記録）</span><span class="pill">連携済み</span></div>
+      <div class="card" style="font-size:12.5px;">
+        <div class="row" style="padding:7px 0;"><span style="font-weight:700;">⌚ ウェアラブル端末</span><span class="pill">連携済み</span></div>
+        <div class="divider" style="margin:2px 0;"></div>
+        <div class="row" style="padding:7px 0;"><span style="font-weight:700;">⚖️ スマート体組成計</span><span class="pill">連携済み</span></div>
+        <div class="divider" style="margin:2px 0;"></div>
+        <div class="row" style="padding:7px 0;"><span style="font-weight:700;">📍 GPS（ラン記録）</span><span class="pill">連携済み</span></div>
       </div>
 
     </div>
