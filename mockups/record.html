@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>記録 | VitaOne モックアップ</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="phone">
+  <div class="statusbar"></div>
+  <div class="screen">
+    <div class="appbar">
+      <h1>記録</h1>
+      <div class="icon">🔗</div>
+    </div>
+    <div class="content">
+
+      <div class="section-title">からだのデータ（自動連携）</div>
+      <div class="card">
+        <div class="row">
+          <div>
+            <div style="font-weight:700; font-size:20px;">68.4 kg</div>
+            <div style="font-size:12px; color:var(--muted); margin-top:2px;">体脂肪率 21.3%・前週比 ▲0.3kg</div>
+          </div>
+          <span class="pill">スマート体組成計と連携中</span>
+        </div>
+        <div class="trend-line">
+          <svg viewBox="0 0 300 90" preserveAspectRatio="none">
+            <polyline points="0,55 40,50 80,52 120,46 160,48 200,40 240,42 300,30"
+              fill="none" stroke="#2f7d6b" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div style="font-size:11px; color:var(--muted); text-align:right;">直近4週間の体重推移</div>
+      </div>
+
+      <div class="section-title">睡眠（ウェアラブル連携）</div>
+      <div class="card">
+        <div class="row">
+          <span style="font-size:13px;">昨晩の睡眠</span>
+          <span class="pill">7時間28分・質：良好</span>
+        </div>
+        <div class="divider"></div>
+        <div class="row">
+          <span style="font-size:13px;">安静時心拍</span>
+          <span style="font-size:13px;color:var(--muted);">52 bpm（先週平均：54 bpm）</span>
+        </div>
+      </div>
+
+      <div class="section-title">目標（ひとつだけ）</div>
+      <div class="card action-card">
+        <div class="emoji">🎯</div>
+        <div>
+          <div class="title">3ヶ月で -3kg</div>
+          <div class="desc">現在 68.4kg → 目標 65.4kg（あと2.4kg・進捗 20%）</div>
+          <div class="bar-track"><div class="bar-fill" style="width:20%;"></div></div>
+        </div>
+      </div>
+
+      <div class="section-title">連携デバイス</div>
+      <div class="card" style="font-size:13px; line-height:2.2;">
+        <div class="row"><span>⌚ ウェアラブル端末</span><span class="pill">連携済み</span></div>
+        <div class="row"><span>⚖️ スマート体組成計</span><span class="pill">連携済み</span></div>
+        <div class="row"><span>📍 GPS（ラン記録）</span><span class="pill">連携済み</span></div>
+      </div>
+
+    </div>
+
+    <div class="tabbar">
+      <a class="tab" href="home.html"><span class="ti">🏠</span>ホーム</a>
+      <a class="tab active" href="record.html"><span class="ti">📋</span>記録</a>
+      <a class="tab" href="run.html"><span class="ti">🏃</span>走る</a>
+      <a class="tab" href="meal.html"><span class="ti">🍽</span>食事</a>
+      <a class="tab" href="trend.html"><span class="ti">📈</span>トレンド</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

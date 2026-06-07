@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VitaOne モックアップ一覧</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  body { display: block; padding: 40px 16px; }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 24px; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>VitaOne — 画面モックアップ一覧</h1>
+  <p class="intro" style="margin-left:0;">
+    WHOOP・ヘルスプラネット・ASICS Runkeeper を融合し、さらに簡略化した健康管理アプリの
+    画面モックアップです。各カードをクリックすると、その画面のイメージを確認できます。
+    詳しい仕様は <a href="../README.md">設計ドキュメント（docs/）</a> を参照してください。
+  </p>
+
+  <div class="gallery" style="grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap:16px;">
+    <a class="gallery-link" href="home.html">
+      <div class="item">🏠</div>
+      <p>ホーム<br><span style="font-weight:400;color:var(--muted);font-size:11px;">統合コンディションスコア</span></p>
+    </a>
+    <a class="gallery-link" href="record.html">
+      <div class="item">📋</div>
+      <p>記録<br><span style="font-weight:400;color:var(--muted);font-size:11px;">体組成・睡眠（自動連携）</span></p>
+    </a>
+    <a class="gallery-link" href="run.html">
+      <div class="item">🏃</div>
+      <p>走る<br><span style="font-weight:400;color:var(--muted);font-size:11px;">GPSラン記録</span></p>
+    </a>
+    <a class="gallery-link" href="meal.html">
+      <div class="item">🍽</div>
+      <p>食事・献立提案<br><span style="font-weight:400;color:var(--muted);font-size:11px;">写真から自動記録＋提案（目玉機能）</span></p>
+    </a>
+    <a class="gallery-link" href="trend.html">
+      <div class="item">📈</div>
+      <p>トレンド<br><span style="font-weight:400;color:var(--muted);font-size:11px;">週次レポート</span></p>
+    </a>
+  </div>
+</div>
+</body>
+</html>

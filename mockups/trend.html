@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>トレンド | VitaOne モックアップ</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="phone">
+  <div class="statusbar"></div>
+  <div class="screen">
+    <div class="appbar">
+      <h1>トレンド</h1>
+      <div class="icon">🗓</div>
+    </div>
+    <div class="content">
+
+      <div class="section-title">今週のサマリー（5/31〜6/6）</div>
+      <div class="card">
+        <div class="row" style="margin-bottom:4px;">
+          <span style="font-weight:700;">コンディションスコアの推移</span>
+          <span class="pill">平均 74</span>
+        </div>
+        <div class="trend-line">
+          <svg viewBox="0 0 300 90" preserveAspectRatio="none">
+            <polyline points="0,60 50,50 100,58 150,38 200,42 250,30 300,26"
+              fill="none" stroke="#2f7d6b" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="divider"></div>
+        <div style="font-size:13px; line-height:1.8;">
+          <strong>👍 今週よかったこと</strong><br>
+          <span style="color:var(--muted);">睡眠時間が安定し、回復スコアが週を通して高めでした。運動も無理のないペースで継続できています。</span>
+        </div>
+        <div style="font-size:13px; line-height:1.8; margin-top:10px;">
+          <strong>🎯 来週に向けて</strong><br>
+          <span style="color:var(--muted);">夕食の栄養バランスにやや偏りが見られました。野菜多めの献立提案を活用してみましょう。</span>
+        </div>
+      </div>
+
+      <div class="section-title">主要指標</div>
+      <div class="card">
+        <div class="row"><span class="pill">体重</span><span style="font-size:13px;color:var(--muted);">68.4kg（▲0.3kg）</span></div>
+        <div class="divider"></div>
+        <div class="row"><span class="pill">運動</span><span style="font-size:13px;color:var(--muted);">3回・計87分・消費 約720kcal</span></div>
+        <div class="divider"></div>
+        <div class="row"><span class="pill">睡眠</span><span style="font-size:13px;color:var(--muted);">平均 7時間12分</span></div>
+        <div class="divider"></div>
+        <div class="row"><span class="pill">食事</span><span style="font-size:13px;color:var(--muted);">記録日数 7/7・栄養バランス 良好</span></div>
+      </div>
+
+      <a class="btn-secondary" href="trend.html">詳細グラフを開く（折りたたみ）</a>
+
+    </div>
+
+    <div class="tabbar">
+      <a class="tab" href="home.html"><span class="ti">🏠</span>ホーム</a>
+      <a class="tab" href="record.html"><span class="ti">📋</span>記録</a>
+      <a class="tab" href="run.html"><span class="ti">🏃</span>走る</a>
+      <a class="tab" href="meal.html"><span class="ti">🍽</span>食事</a>
+      <a class="tab active" href="trend.html"><span class="ti">📈</span>トレンド</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

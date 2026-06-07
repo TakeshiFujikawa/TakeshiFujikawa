@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食事・献立提案 | VitaOne モックアップ</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="phone">
+  <div class="statusbar"></div>
+  <div class="screen">
+    <div class="appbar">
+      <h1>食事</h1>
+      <div class="icon">📷</div>
+    </div>
+    <div class="content">
+
+      <div class="section-title">今日の記録（写真を撮るだけ）</div>
+      <div class="card">
+        <div class="photo-frame">📸 タップして食事の写真を撮影<br>（自動で品目・カロリーを推定します）</div>
+        <div class="row" style="margin-bottom:6px;">
+          <strong style="font-size:14px;">昼食：鶏の照り焼き定食</strong>
+          <span class="pill">推定 720kcal</span>
+        </div>
+        <div style="font-size:12px;color:var(--muted);">たんぱく質 38g／脂質 22g／炭水化物 88g（解析結果。タップで修正できます）</div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="margin-bottom:8px;">
+          <span class="section-title" style="margin:0;">今日の摂取バランス</span>
+          <span class="pill muted">残り 約 620kcal</span>
+        </div>
+        <div style="font-size:12px;color:var(--muted);">たんぱく質</div>
+        <div class="bar-track"><div class="bar-fill" style="width:62%;"></div></div>
+        <div style="font-size:12px;color:var(--muted);margin-top:10px;">脂質</div>
+        <div class="bar-track"><div class="bar-fill" style="width:48%; background:var(--accent);"></div></div>
+        <div style="font-size:12px;color:var(--muted);margin-top:10px;">炭水化物</div>
+        <div class="bar-track"><div class="bar-fill" style="width:70%; background:#5b8fb3;"></div></div>
+      </div>
+
+      <div class="section-title">🍽 次の食事のおすすめ</div>
+      <div class="card">
+        <div class="suggestion-item">
+          <div class="num">1</div>
+          <div>
+            <div class="name">鶏むね肉と温野菜のグリル（自宅で）</div>
+            <div class="meta">推定 480kcal ／ たんぱく質 35g</div>
+            <div class="reason">今日は運動量が多めなので、たんぱく質をしっかり摂れる献立にしました。消化にも優しく、回復をサポートします。</div>
+          </div>
+        </div>
+        <div class="suggestion-item">
+          <div class="num">2</div>
+          <div>
+            <div class="name">コンビニなら：サラダチキン＋具沢山スープ＋おにぎり1個</div>
+            <div class="meta">推定 540kcal ／ 残りカロリー枠にちょうど収まる組み合わせ</div>
+            <div class="reason">外食・中食でも選びやすいよう、コンビニで揃えられる組み合わせも用意しました。</div>
+          </div>
+        </div>
+        <div class="advice-box">
+          ⚠ ひとことアドバイス：ここ2日、揚げ物が続いています。今日の夜は野菜多めのメニューがおすすめです。
+        </div>
+      </div>
+
+      <div class="section-title">この提案が考慮した条件</div>
+      <div class="card" style="font-size:12px; color:var(--muted); line-height:2;">
+        <div class="row"><span>① アレルギー・食事制限</span><span class="pill">該当なし（卵・乳を除外設定）</span></div>
+        <div class="row"><span>② 今日のコンディション</span><span class="pill">活動量やや多め → たんぱく質を優先</span></div>
+        <div class="row"><span>③ 残りカロリー枠</span><span class="pill">約 620kcal</span></div>
+        <div class="row"><span>④ 直近の栄養バランス</span><span class="pill warn">揚げ物が連続 → 野菜を優先</span></div>
+        <div class="row"><span>⑤ 健康目標</span><span class="pill">維持（バランス重視）</span></div>
+      </div>
+
+      <a class="btn-primary" href="meal.html">別の提案を見る</a>
+
+    </div>
+
+    <div class="tabbar">
+      <a class="tab" href="home.html"><span class="ti">🏠</span>ホーム</a>
+      <a class="tab" href="record.html"><span class="ti">📋</span>記録</a>
+      <a class="tab" href="run.html"><span class="ti">🏃</span>走る</a>
+      <a class="tab active" href="meal.html"><span class="ti">🍽</span>食事</a>
+      <a class="tab" href="trend.html"><span class="ti">📈</span>トレンド</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
