@@ -92,7 +92,8 @@ Health Planet等の体組成計が出力する主要指標を保持する
 |---|---|
 | id, datetime | 提案を生成した日時 |
 | target_meal_type | 提案対象の食事（朝食／昼食／夕食／間食） |
-| candidates[] | 提案した献立候補（**5件**。名称・推定カロリー・推定PFC・提案理由） |
+| candidates[] | 提案した献立候補（**5件**。名称・推定カロリー・推定量(g)・推定PFC・提案理由・**食べる順番（eating_order）**） |
+| referenced_recipe_sites[] | バリエーションの参照元としたレシピサイト（[3-3条件6](03-meal-suggestion-spec.md)の一覧から） |
 | evaluated_conditions | どの条件（3-3の条件1〜6）が提案に影響したかの記録（説明可能性のため保持） |
 | advice_text | 添えた一言アドバイス（例：揚げ物が続いている、等） |
 
