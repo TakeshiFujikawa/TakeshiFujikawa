@@ -675,10 +675,10 @@ body {
   </div>
 
   <!-- ============ HOME ============ -->
-  <div class="screen active" id="screen-home">
+  <div class="screen" id="screen-home">
     <div class="appbar">
       <div>
-        <p class="eyebrow">Day 30 / 365 ・ 健康管理プログラム</p>
+        <p class="eyebrow">Day 14 / 365 ・ 健康管理プログラム</p>
         <h1>おはようございます</h1>
       </div>
       <a class="icon-btn" href="#" aria-label="設定" onclick="return false;">
@@ -834,7 +834,7 @@ body {
         <div>
           <div class="title">体脂肪率 27.00% へ（ボディリコンポジション）</div>
           <div class="desc">
-            健康管理プログラム　2026.5.14 スタート　<span style="color:var(--teal-600); font-weight:700;">Day 30</span><br>
+            健康管理プログラム　2026.5.30 スタート　<span style="color:var(--teal-600); font-weight:700;">Day 14</span><br>
             現在 体脂肪率30.20%・体重89.20kg → 次の目標 体脂肪率27.00%・体重86.00kg<br>
             （内臓脂肪13.0／基礎代謝1,800kcal／体内年齢47才）
           </div>
@@ -932,7 +932,7 @@ body {
   </div>
 
   <!-- ============ MEAL ============ -->
-  <div class="screen" id="screen-meal">
+  <div class="screen active" id="screen-meal">
     <div class="appbar">
       <div>
         <p class="eyebrow">写真を撮るだけで記録</p>
@@ -1331,7 +1331,8 @@ body {
     var frame = document.getElementById('meal-photo-frame');
     if (frame) frame.addEventListener('click', playMealDemo);
     resetMealDemo();
-    initScoreRingAnimation();
+    // 食事画面が起点：「撮ったら、ぜんぶ出てくる」体験を到着直後に自動再生する
+    setTimeout(playMealDemo, 700);
   });
 })();
 </script>
