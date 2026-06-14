@@ -16,6 +16,8 @@
 
   --amber-600: #e8923a;
   --amber-100: #fcebd6;
+  --amber-50:  #fdf6ec;
+  --amber-700: #7a4f1f;
 
   --coral-600: #e36a5d;
   --coral-100: #fbe2de;
@@ -689,3 +691,253 @@ body {
   color: var(--ink-soft);
   line-height: 1.85;
 }
+
+/* ---------- Input method tabs (photo / text / barcode) ---------- */
+
+.input-tabs {
+  display: flex;
+  gap: 6px;
+  background: #f1f4f3;
+  border-radius: 999px;
+  padding: 4px;
+  margin-bottom: 14px;
+}
+.input-tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 4px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+}
+.input-tab.active {
+  background: #fff;
+  color: var(--teal-700);
+  box-shadow: var(--shadow-card);
+}
+.input-panel[hidden] { display: none; }
+
+/* ---------- Text search panel ---------- */
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f6f8f7;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 11px 14px;
+  margin-bottom: 12px;
+  color: var(--ink-soft);
+}
+.search-box input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--ink);
+  outline: none;
+}
+.search-box input::placeholder { color: #aab4b0; }
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.food-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--teal-50);
+  border: 1px solid var(--teal-100);
+  color: var(--teal-700);
+  font-size: 12px;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.food-chip span { color: var(--ink-soft); font-weight: 600; }
+.food-chip.is-added {
+  background: var(--teal-600);
+  color: #fff;
+  border-color: var(--teal-600);
+}
+.food-chip.is-added span { color: rgba(255,255,255,0.8); }
+
+/* ---------- Barcode panel ---------- */
+
+.barcode-frame {
+  height: 150px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, var(--teal-900), #0d1715);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.barcode-frame .target {
+  width: 70%; height: 64px;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.barcode-frame .target::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 2px;
+  background: var(--teal-400);
+  box-shadow: 0 0 8px var(--teal-400);
+  animation: scan-line 1.8s ease-in-out infinite;
+}
+@keyframes scan-line {
+  0%, 100% { top: 0; }
+  50% { top: calc(100% - 2px); }
+}
+.barcode-frame .hint {
+  position: absolute; bottom: 12px; left: 0; right: 0;
+  text-align: center; color: #fff; font-size: 11.5px; font-weight: 600; opacity: 0.85;
+}
+
+.scan-result { padding-top: 4px; }
+.scan-result .row { margin-bottom: 8px; }
+
+/* ---------- Allergen / additive tags ---------- */
+
+.tag-row {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 8px;
+}
+.tag {
+  font-size: 10.5px; font-weight: 700;
+  padding: 4px 10px; border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #f1f4f3; color: var(--ink-soft);
+}
+.tag-warn { background: var(--coral-100); border-color: #f6d3cd; color: #ad3f31; }
+.tag-info { background: var(--teal-50); border-color: var(--teal-100); color: var(--teal-700); }
+
+/* ---------- Meal result edit panel ---------- */
+
+.meal-edit-toggle {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 8px;
+  background: none; border: none; padding: 0;
+  font-size: 11.5px; font-weight: 700; color: var(--teal-600);
+  cursor: pointer; font-family: inherit;
+}
+.meal-edit {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  display: none;
+}
+.meal-edit.is-open { display: block; }
+
+.food-item-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 0;
+}
+.food-item-row:not(:last-child) { border-bottom: 1px solid var(--line); }
+.food-item-row .food-name {
+  flex: 1; font-size: 12.5px; font-weight: 700; font-family: "Noto Sans JP", sans-serif;
+}
+.food-item-row .food-kcal {
+  font-size: 11px; color: var(--ink-soft); font-weight: 600; white-space: nowrap;
+}
+.qty-stepper {
+  display: flex; align-items: center; gap: 6px;
+}
+.qty-stepper button {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 1px solid var(--line); background: #fff;
+  color: var(--teal-700); font-size: 14px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-family: inherit; line-height: 1; padding: 0;
+}
+.qty-stepper .qty-val {
+  font-size: 11.5px; font-weight: 700; min-width: 38px; text-align: center;
+}
+.food-item-row .remove-btn {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: none; background: var(--coral-100); color: #ad3f31;
+  font-size: 13px; font-weight: 800; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; padding: 0;
+  font-family: inherit; line-height: 1;
+}
+.add-item-row {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
+}
+.add-item-chip {
+  font-size: 11px; font-weight: 700; color: var(--teal-700);
+  background: var(--teal-50); border: 1px dashed var(--teal-100);
+  border-radius: 999px; padding: 6px 12px; cursor: pointer; font-family: inherit;
+}
+
+/* ---------- Favorite button ---------- */
+
+.fav-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  border: 1px solid var(--line); background: #fff;
+  border-radius: 999px; padding: 6px 12px;
+  font-size: 11px; font-weight: 700; color: var(--ink-soft);
+  cursor: pointer; font-family: inherit; margin-top: 8px;
+}
+.fav-btn.is-fav { background: var(--coral-100); border-color: #f6d3cd; color: #ad3f31; }
+
+/* ---------- Meal plan calendar strip ---------- */
+
+.plan-strip {
+  display: flex; gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  margin-bottom: 14px;
+  scrollbar-width: none;
+}
+.plan-strip::-webkit-scrollbar { display: none; }
+.plan-day {
+  flex: 0 0 50px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 10px 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: #fff;
+  font-size: 11px; font-weight: 700; color: var(--ink-soft);
+  cursor: pointer;
+}
+.plan-day .dow { font-size: 10px; }
+.plan-day .dom { font-size: 15px; font-weight: 800; color: var(--ink); font-family: "Noto Sans JP", sans-serif; }
+.plan-day .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal-400); }
+.plan-day.adjust .dot { background: var(--amber-600); }
+.plan-day.active {
+  background: linear-gradient(135deg, var(--teal-600), var(--teal-700));
+  border-color: var(--teal-600);
+}
+.plan-day.active .dow, .plan-day.active .dom { color: #fff; }
+.plan-day.active .dot { background: #fff; }
+
+.plan-meal-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 0;
+}
+.plan-meal-row:not(:last-child) { border-bottom: 1px solid var(--line); }
+.plan-meal-row .emoji {
+  width: 42px; height: 42px; border-radius: 12px;
+  background: var(--teal-50); border: 1px solid var(--teal-100);
+  display: flex; align-items: center; justify-content: center; font-size: 19px;
+  flex-shrink: 0;
+}
+.plan-meal-row .info { flex: 1; min-width: 0; }
+.plan-meal-row .label { font-size: 10.5px; font-weight: 700; color: var(--teal-600); letter-spacing: 0.06em; text-transform: uppercase; }
+.plan-meal-row .name { font-size: 13.5px; font-weight: 700; font-family: "Noto Sans JP", sans-serif; margin-top: 2px; }
+.plan-meal-row .kcal { font-size: 12px; font-weight: 800; color: var(--ink); white-space: nowrap; }

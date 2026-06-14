@@ -135,8 +135,131 @@
     });
   }
 
+  function initInputTabs() {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.input-tab'));
+    if (!tabs.length) return;
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.input-panel'));
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        var target = tab.getAttribute('data-panel');
+        panels.forEach(function (panel) {
+          panel.hidden = panel.getAttribute('data-panel') !== target;
+        });
+      });
+    });
+  }
+
+  function initFoodChips() {
+    Array.prototype.slice.call(document.querySelectorAll('.food-chip')).forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        chip.classList.toggle('is-added');
+      });
+    });
+  }
+
+  function initFavButtons() {
+    Array.prototype.slice.call(document.querySelectorAll('.fav-btn')).forEach(function (btn) {
+      var defaultLabel = btn.textContent;
+      var activeLabel = '♥ お気に入りに保存しました';
+      btn.addEventListener('click', function () {
+        var isFav = btn.classList.toggle('is-fav');
+        btn.textContent = isFav ? activeLabel : defaultLabel;
+      });
+    });
+  }
+
+  function initMealEdit() {
+    var toggle = document.getElementById('meal-edit-toggle');
+    var panel = document.getElementById('meal-edit');
+    if (!toggle || !panel) return;
+
+    toggle.addEventListener('click', function () {
+      panel.classList.toggle('is-open');
+    });
+
+    var kcalEl = document.querySelector('[data-count-kcal]');
+    var gramEl = document.querySelector('[data-count-gram]');
+
+    function recalc() {
+      var totalKcal = 0, totalGram = 0;
+      Array.prototype.slice.call(panel.querySelectorAll('.food-item-row')).forEach(function (row) {
+        totalKcal += +row.dataset.kcal;
+        totalGram += +row.dataset.grams;
+      });
+      if (kcalEl) kcalEl.textContent = totalKcal.toLocaleString('ja-JP');
+      if (gramEl) gramEl.textContent = totalGram.toLocaleString('ja-JP');
+    }
+
+    panel.addEventListener('click', function (e) {
+      var row = e.target.closest('.food-item-row');
+      if (row) {
+        var step = +row.dataset.step || 10;
+        var kcalStep = +row.dataset.kcalPerStep || 0;
+        if (e.target.classList.contains('qty-plus')) {
+          row.dataset.grams = String(+row.dataset.grams + step);
+          row.dataset.kcal = String(+row.dataset.kcal + kcalStep);
+        } else if (e.target.classList.contains('qty-minus')) {
+          if (+row.dataset.grams - step <= 0) return;
+          row.dataset.grams = String(+row.dataset.grams - step);
+          row.dataset.kcal = String(Math.max(0, +row.dataset.kcal - kcalStep));
+        } else if (e.target.classList.contains('remove-btn')) {
+          row.remove();
+          recalc();
+          return;
+        } else {
+          return;
+        }
+        row.querySelector('.qty-val').textContent = row.dataset.grams + 'g';
+        row.querySelector('.food-kcal').textContent = row.dataset.kcal + 'kcal';
+        recalc();
+        return;
+      }
+
+      var chip = e.target.closest('.add-item-chip');
+      if (chip) {
+        var grams = +chip.dataset.grams;
+        var kcal = +chip.dataset.kcal;
+        var newRow = document.createElement('div');
+        newRow.className = 'food-item-row';
+        newRow.dataset.grams = String(grams);
+        newRow.dataset.kcal = String(kcal);
+        newRow.dataset.step = '10';
+        newRow.dataset.kcalPerStep = String(Math.max(1, Math.round(kcal / grams * 10)));
+        newRow.innerHTML =
+          '<span class="food-name">' + chip.dataset.name + '</span>' +
+          '<span class="food-kcal">' + kcal + 'kcal</span>' +
+          '<div class="qty-stepper"><button class="qty-minus">−</button><span class="qty-val">' + grams + 'g</span><button class="qty-plus">+</button></div>' +
+          '<button class="remove-btn">×</button>';
+        var addRow = chip.closest('.add-item-row');
+        addRow.parentNode.insertBefore(newRow, addRow);
+        chip.remove();
+        recalc();
+      }
+    });
+  }
+
+  function initMealPlanStrip() {
+    var days = Array.prototype.slice.call(document.querySelectorAll('.plan-day'));
+    var label = document.getElementById('plan-date-label');
+    if (!days.length || !label) return;
+    days.forEach(function (day) {
+      day.addEventListener('click', function () {
+        days.forEach(function (d) { d.classList.remove('active'); });
+        day.classList.add('active');
+        label.textContent = day.dataset.label + 'の献立（AI自動生成）';
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initMealAnalysisDemo();
     initScoreRingAnimation();
+    initInputTabs();
+    initFoodChips();
+    initFavButtons();
+    initMealEdit();
+    initMealPlanStrip();
   });
 })();
