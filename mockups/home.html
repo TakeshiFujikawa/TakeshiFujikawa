@@ -59,7 +59,7 @@
             <div class="step"><div class="dot">✓</div><div class="lbl">品目を<br>認識</div></div>
             <div class="step"><div class="dot">✓</div><div class="lbl">カロリー算出・<br>総量(g)を推定</div></div>
             <div class="step"><div class="dot">✓</div><div class="lbl">体組成・目標と<br>照合</div></div>
-            <div class="step"><div class="dot">✓</div><div class="lbl">5案の提案を<br>生成</div></div>
+            <div class="step"><div class="dot">✓</div><div class="lbl">9案の提案を<br>生成</div></div>
           </div>
 
           <div class="row fade-seq" data-seq="1" style="margin-bottom:8px; align-items:flex-start;">
@@ -186,7 +186,7 @@
         </div>
       </div>
 
-      <div class="section-title">🍽 今日の昼食のご提案<span class="more">5案</span></div>
+      <div class="section-title">🍽 今日の昼食のご提案<span class="more">9案</span></div>
       <div class="card" id="meal-suggestions">
         <div class="suggestion-item fade-seq" data-seq="3">
           <div class="num">1</div>
@@ -268,14 +268,78 @@
             </div>
           </div>
         </div>
-        <div class="advice-box fade-seq" data-seq="8">
+        <div class="suggestion-item fade-seq" data-seq="8">
+          <div class="num">6</div>
+          <div>
+            <div class="name">焼き魚定食（外食・定食店）</div>
+            <div class="meta">推定 550kcal ・ たんぱく質 30g</div>
+            <div class="reason">外食でも、揚げ物を避けて焼き魚中心の定食を選べば今日の方針に近づけます。ご飯は少なめでお願いすると◎。</div>
+            <div class="order">🥢 食べる順番（5ステップ）：①水・黒豆茶を一杯 → ②お新香・小鉢の野菜 → ③味噌汁の具 → ④焼き魚 → ⑤ご飯は最後に少なめに。1口30回・20分以上かけて食べましょう。</div>
+            <div class="suggestion-cta">
+              <div class="cta-msg">✓ この献立を選びました。ミールプランに追加して、今日の食事として記録しましょう。</div>
+              <div class="cta-actions">
+                <button class="btn-mini btn-mini-primary" data-suggestion-action="plan">ミールプランに追加する</button>
+                <button class="btn-mini btn-mini-ghost" data-suggestion-action="back">他の提案を見る</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="suggestion-item fade-seq" data-seq="9">
+          <div class="num">7</div>
+          <div>
+            <div class="name">グリルチキン＆温野菜プレート（外食・カフェ）</div>
+            <div class="meta">推定 480kcal ・ たんぱく質 34g</div>
+            <div class="reason">外食先でも高たんぱく・低脂質のグリル料理を選べば、内臓脂肪の改善ペースを保てます。ドレッシングは別添えで。</div>
+            <div class="order">🥢 食べる順番（5ステップ）：①水・黒豆茶を一杯 → ②サラダ・温野菜 → ③スープ → ④グリルチキン → ⑤パンや雑穀は最後に少なめに。1口30回・20分以上かけて食べましょう。</div>
+            <div class="suggestion-cta">
+              <div class="cta-msg">✓ この献立を選びました。ミールプランに追加して、今日の食事として記録しましょう。</div>
+              <div class="cta-actions">
+                <button class="btn-mini btn-mini-primary" data-suggestion-action="plan">ミールプランに追加する</button>
+                <button class="btn-mini btn-mini-ghost" data-suggestion-action="back">他の提案を見る</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="suggestion-item fade-seq" data-seq="10">
+          <div class="num">8</div>
+          <div>
+            <div class="name">鶏むね肉グリルボウル（UberEats）</div>
+            <div class="meta">推定 520kcal ・ たんぱく質 36g</div>
+            <div class="reason">出前でも揚げ物を避け、グリル・蒸し中心のヘルシーボウルを選べば、今日のアドバイスに沿った一食になります。</div>
+            <div class="order">🥢 食べる順番（5ステップ）：①水・黒豆茶を一杯 → ②付け合わせの野菜 → ③スープがあれば先に → ④鶏むね肉 → ⑤ご飯・雑穀は最後に少なめに。1口30回・20分以上かけて食べましょう。</div>
+            <div class="suggestion-cta">
+              <div class="cta-msg">✓ この献立を選びました。ミールプランに追加して、今日の食事として記録しましょう。</div>
+              <div class="cta-actions">
+                <button class="btn-mini btn-mini-primary" data-suggestion-action="plan">ミールプランに追加する</button>
+                <button class="btn-mini btn-mini-ghost" data-suggestion-action="back">他の提案を見る</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="suggestion-item fade-seq" data-seq="11">
+          <div class="num">9</div>
+          <div>
+            <div class="name">鯖の塩焼き弁当（UberEats）</div>
+            <div class="meta">推定 560kcal ・ たんぱく質 32g</div>
+            <div class="reason">和食系の出前なら焼き魚・煮物中心の弁当を。揚げ物の付け合わせを残せば、今日の方針に合わせやすくなります。</div>
+            <div class="order">🥢 食べる順番（5ステップ）：①水・黒豆茶を一杯 → ②煮物・お新香 → ③味噌汁の具 → ④焼き魚 → ⑤ご飯は最後に少なめに。1口30回・20分以上かけて食べましょう。</div>
+            <div class="suggestion-cta">
+              <div class="cta-msg">✓ この献立を選びました。ミールプランに追加して、今日の食事として記録しましょう。</div>
+              <div class="cta-actions">
+                <button class="btn-mini btn-mini-primary" data-suggestion-action="plan">ミールプランに追加する</button>
+                <button class="btn-mini btn-mini-ghost" data-suggestion-action="back">他の提案を見る</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="advice-box fade-seq" data-seq="12">
           <span>⚠️</span>
           <span>ひとことアドバイス：ここ2日、揚げ物が続いています。今日は油を使う調理を避けた①③④のような選択がおすすめです。</span>
         </div>
       </div>
 
       <div class="section-title">📊 今日の課題の整理 <span class="more">Health Planetより</span></div>
-      <div class="card fade-seq" data-seq="9">
+      <div class="card fade-seq" data-seq="13">
         <div style="font-size:12.5px; font-weight:800; color:#ad3f31; font-family:'Noto Sans JP',sans-serif; margin-bottom:8px;">最優先で改善すべき点</div>
         <div class="suggestion-item" style="padding:8px 0;">
           <div class="num" style="background:linear-gradient(135deg,var(--coral-600),#ad3f31); box-shadow:0 6px 14px -6px rgba(227,106,93,0.6);">!</div>
