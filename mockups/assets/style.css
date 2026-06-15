@@ -278,6 +278,83 @@ body {
 .subscore .bar { height: 4px; border-radius: 99px; background: rgba(255,255,255,0.18); margin-top: 8px; overflow: hidden; }
 .subscore .bar i { display: block; height: 100%; background: #fff; border-radius: 99px; }
 
+/* ---------- Daily budget (remaining kcal) widget ---------- */
+
+.budget-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.budget-ring .ring-bg { stroke: var(--line); }
+.budget-ring .ring-fg {
+  stroke: var(--coral-600);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s cubic-bezier(.22,.7,.2,1);
+}
+.budget-ring .ring-center .rem-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  letter-spacing: 0.08em;
+}
+.budget-ring .ring-center .num {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.budget-ring .ring-center .max {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  opacity: 1;
+  margin-top: 0;
+}
+
+.budget-side { flex: 1; min-width: 0; }
+.budget-goal {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+.budget-goal strong { font-size: 13px; color: var(--ink); }
+
+.macro-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-top: 9px;
+}
+.macro-row:first-of-type { margin-top: 0; }
+.macro-name { flex: 1; }
+.macro-val { color: var(--ink); font-weight: 800; }
+.macro-val small { font-weight: 600; color: var(--ink-soft); }
+
+@property --pct {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+.micro-ring {
+  width: 22px; height: 22px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: conic-gradient(var(--ring-c, var(--teal-600)) calc(var(--pct) * 1%), var(--line) 0);
+  transition: --pct 0.8s cubic-bezier(.22,.7,.2,1);
+}
+.micro-ring::after {
+  content: "";
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--card);
+}
+
 /* ---------- Action / list cards ---------- */
 
 .action-card {
@@ -572,8 +649,28 @@ body {
   display: flex;
   gap: 13px;
   padding: 14px 0;
+  cursor: pointer;
+  max-height: 600px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  transition: opacity .35s ease, max-height .35s ease, padding .35s ease, margin .35s ease, border-color .35s ease, background .35s ease;
 }
+.suggestion-item:active { opacity: 0.85; }
 .suggestion-item:not(:last-child) { border-bottom: 1px solid var(--line); }
+.suggestion-item.is-collapsed {
+  opacity: 0;
+  max-height: 0;
+  padding: 0;
+  margin: 0;
+  border-color: transparent;
+  pointer-events: none;
+}
+.suggestion-item.is-selected {
+  background: var(--teal-50);
+  border-bottom-color: transparent;
+  padding: 14px 12px;
+  cursor: default;
+}
 .suggestion-item .num {
   width: 28px; height: 28px;
   border-radius: 10px;
@@ -612,6 +709,53 @@ body {
   color: #7a4f1f;
   margin-top: 8px;
   font-weight: 500;
+  max-height: 200px;
+  overflow: hidden;
+  transition: opacity .35s ease, max-height .35s ease, padding .35s ease, margin .35s ease;
+}
+.advice-box.is-collapsed {
+  opacity: 0;
+  max-height: 0;
+  padding: 0;
+  margin: 0;
+  border-color: transparent;
+}
+
+.suggestion-cta {
+  display: none;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--teal-100);
+}
+.suggestion-item.is-selected .suggestion-cta { display: block; }
+.suggestion-cta .cta-msg {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--teal-700);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.cta-actions { display: flex; gap: 8px; }
+.btn-mini {
+  flex: 1;
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
+.btn-mini-primary {
+  background: linear-gradient(135deg, var(--teal-600), var(--teal-700));
+  color: #fff;
+  box-shadow: 0 6px 14px -6px rgba(42,147,121,0.6);
+}
+.btn-mini-ghost {
+  background: var(--card);
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
 }
 
 /* ---------- Map / route ---------- */

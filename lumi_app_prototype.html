@@ -290,6 +290,84 @@ body {
 .subscore .bar { height: 4px; border-radius: 99px; background: rgba(255,255,255,0.18); margin-top: 8px; overflow: hidden; }
 .subscore .bar i { display: block; height: 100%; background: #fff; border-radius: 99px; }
 
+/* ---------- Daily budget (remaining kcal) widget ---------- */
+
+.budget-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.budget-ring .ring-bg { stroke: var(--line); }
+.budget-ring .ring-fg {
+  stroke: var(--coral-600);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s cubic-bezier(.22,.7,.2,1);
+}
+.budget-ring .ring-center .rem-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  letter-spacing: 0.08em;
+}
+.budget-ring .ring-center .num {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.budget-ring .ring-center .max {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  opacity: 1;
+  margin-top: 0;
+}
+
+.budget-side { flex: 1; min-width: 0; }
+.budget-goal {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+.budget-goal strong { font-size: 13px; color: var(--ink); }
+
+.macro-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-top: 9px;
+}
+.macro-row:first-of-type { margin-top: 0; }
+.macro-name { flex: 1; }
+.macro-val { color: var(--ink); font-weight: 800; }
+.macro-val small { font-weight: 600; color: var(--ink-soft); }
+
+@property --pct {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+.micro-ring {
+  --pct: 0;
+  width: 22px; height: 22px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: conic-gradient(var(--ring-c, var(--teal-600)) calc(var(--pct) * 1%), var(--line) 0);
+  transition: --pct 0.8s cubic-bezier(.22,.7,.2,1);
+}
+.micro-ring::after {
+  content: "";
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--card);
+}
+
 /* ---------- Action / list cards ---------- */
 
 .action-card {
@@ -585,8 +663,28 @@ body {
   display: flex;
   gap: 13px;
   padding: 14px 0;
+  cursor: pointer;
+  max-height: 600px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  transition: opacity .35s ease, max-height .35s ease, padding .35s ease, margin .35s ease, border-color .35s ease, background .35s ease;
 }
+.suggestion-item:active { opacity: 0.85; }
 .suggestion-item:not(:last-child) { border-bottom: 1px solid var(--line); }
+.suggestion-item.is-collapsed {
+  opacity: 0;
+  max-height: 0;
+  padding: 0;
+  margin: 0;
+  border-color: transparent;
+  pointer-events: none;
+}
+.suggestion-item.is-selected {
+  background: var(--teal-50);
+  border-bottom-color: transparent;
+  padding: 14px 12px;
+  cursor: default;
+}
 .suggestion-item .num {
   width: 28px; height: 28px;
   border-radius: 10px;
@@ -625,6 +723,53 @@ body {
   color: #9a5f17;
   margin-top: 8px;
   font-weight: 500;
+  max-height: 200px;
+  overflow: hidden;
+  transition: opacity .35s ease, max-height .35s ease, padding .35s ease, margin .35s ease;
+}
+.advice-box.is-collapsed {
+  opacity: 0;
+  max-height: 0;
+  padding: 0;
+  margin: 0;
+  border-color: transparent;
+}
+
+.suggestion-cta {
+  display: none;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--teal-100);
+}
+.suggestion-item.is-selected .suggestion-cta { display: block; }
+.suggestion-cta .cta-msg {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--teal-700);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.cta-actions { display: flex; gap: 8px; }
+.btn-mini {
+  flex: 1;
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
+.btn-mini-primary {
+  background: linear-gradient(135deg, var(--teal-600), var(--teal-700));
+  color: #fff;
+  box-shadow: 0 6px 14px -6px rgba(42,147,121,0.6);
+}
+.btn-mini-ghost {
+  background: var(--card);
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
 }
 
 /* ---------- Map / route ---------- */
@@ -1333,20 +1478,43 @@ body {
       </div>
 
       <div class="card fade-seq" data-seq="2">
-        <div class="row" style="margin-bottom:10px;">
-          <span class="section-title" style="margin:0;">今日の摂取バランス</span>
-          <span class="pill muted">残り 約 620kcal</span>
+        <div class="section-title" style="margin:0 0 14px;">今日の摂取バランス</div>
+        <div class="budget-top">
+          <div class="ring-wrap budget-ring">
+            <svg viewBox="0 0 96 96">
+              <circle class="ring-bg" cx="48" cy="48" r="42" fill="none" stroke-width="8"/>
+              <circle class="ring-fg" cx="48" cy="48" r="42" fill="none" stroke-width="8"
+                stroke-dasharray="263.9" stroke-dashoffset="173" data-target-offset="173"/>
+            </svg>
+            <div class="ring-center">
+              <div class="rem-label">残り</div>
+              <div class="num" data-count-remain>0</div>
+              <div class="max">kcal</div>
+            </div>
+          </div>
+          <div class="budget-side">
+            <div class="budget-goal">目標 <strong>1,800</strong> キロカロリー</div>
+            <div class="macro-row">
+              <span class="micro-ring" style="--ring-c:var(--teal-600);" data-pct="62"></span>
+              <span class="macro-name">タンパク質</span>
+              <span class="macro-val">81<small>/130g</small></span>
+            </div>
+            <div class="macro-row">
+              <span class="micro-ring" style="--ring-c:var(--amber-600);" data-pct="48"></span>
+              <span class="macro-name">脂質</span>
+              <span class="macro-val">26<small>/55g</small></span>
+            </div>
+            <div class="macro-row">
+              <span class="micro-ring" style="--ring-c:var(--sky-600);" data-pct="70"></span>
+              <span class="macro-name">炭水化物</span>
+              <span class="macro-val">161<small>/230g</small></span>
+            </div>
+          </div>
         </div>
-        <div style="font-size:11.5px;color:var(--ink-soft);font-weight:700;">タンパク質 <span style="float:right;color:var(--ink);">62%</span></div>
-        <div class="bar-track"><div class="bar-fill animate-fill" data-fill="62" style="width:0%;"></div></div>
-        <div style="font-size:11.5px;color:var(--ink-soft);font-weight:700;margin-top:12px;">脂質 <span style="float:right;color:var(--ink);">48%</span></div>
-        <div class="bar-track"><div class="bar-fill animate-fill" data-fill="48" style="width:0%; background:linear-gradient(90deg,#f6dcb8,var(--amber-600));"></div></div>
-        <div style="font-size:11.5px;color:var(--ink-soft);font-weight:700;margin-top:12px;">炭水化物 <span style="float:right;color:var(--ink);">70%</span></div>
-        <div class="bar-track"><div class="bar-fill animate-fill" data-fill="70" style="width:0%; background:linear-gradient(90deg,#cfe4f4,var(--sky-600));"></div></div>
       </div>
 
       <div class="section-title">🍽 今日の昼食のご提案<span class="more">5案</span></div>
-      <div class="card">
+      <div class="card" id="meal-suggestions">
         <div class="suggestion-item fade-seq" data-seq="3">
           <div class="num">1</div>
           <div>
@@ -1354,6 +1522,13 @@ body {
             <div class="meta">推定 480kcal ・ たんぱく質 35g</div>
             <div class="reason">内臓脂肪・体脂肪率の改善が最優先のため、高たんぱく・低脂質を意識。消化にも優しく、回復をサポートします。</div>
             <div class="order">🥢 食べる順番（5ステップ）：①水・黒豆茶を一杯 → ②温野菜 → ③鶏むね肉 → ④スープ → ⑤（主食を添えるなら）雑穀ご飯は最後に少なめに。1口30回・20分以上かけて、ゆっくり食べましょう。</div>
+            <div class="suggestion-cta">
+              <div class="cta-msg">✓ この献立を選びました。ミールプランに追加して、今日の食事として記録しましょう。</div>
+              <div class="cta-actions">
+                <button class="btn-mini btn-mini-primary" data-suggestion-action="plan">ミールプランに追加する</button>
+                <button class="btn-mini btn-mini-ghost" data-suggestion-action="back">他の提案を見る</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="suggestion-item fade-seq" data-seq="4">
@@ -1363,6 +1538,13 @@ body {
             <div class="meta">推定 540kcal ・ 残りカロリー枠にぴったり</div>
             <div class="reason">外食・中食でも選びやすいよう、コンビニで揃えられる組み合わせも用意しました。</div>
             <div class="order">🥢 食べる順番（5ステップ）：①水・黒豆茶を一杯 → ②味噌汁の野菜・きのこ・海藻 → ③サラダチキン → ④味噌汁の汁 → ⑤雑穀おにぎりは最後に少なめに。1口30回・20分以上かけて食べましょう。</div>
+            <div class="suggestion-cta">
+              <div class="cta-msg">✓ この献立を選びました。ミールプランに追加して、今日の食事として記録しましょう。</div>
+              <div class="cta-actions">
+                <button class="btn-mini btn-mini-primary" data-suggestion-action="plan">ミールプランに追加する</button>
+                <button class="btn-mini btn-mini-ghost" data-suggestion-action="back">他の提案を見る</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="suggestion-item fade-seq" data-seq="5">
@@ -1372,6 +1554,13 @@ body {
             <div class="meta">推定 560kcal ・ たんぱく質 32g</div>
             <div class="reason">内臓脂肪レベルの改善に役立つ青魚・食物繊維を中心に構成しました。</div>
             <div class="order">🥢 食べる順番（5ステップ）：①水・黒豆茶を一杯 → ②ひじきの煮物（海藻・野菜） → ③鯖の塩焼き → ④汁物があれば先に一口 → ⑤玄米は最後に少なめに。1口30回・20分以上かけて、よく噛んで食べましょう。</div>
+            <div class="suggestion-cta">
+              <div class="cta-msg">✓ この献立を選びました。ミールプランに追加して、今日の食事として記録しましょう。</div>
+              <div class="cta-actions">
+                <button class="btn-mini btn-mini-primary" data-suggestion-action="plan">ミールプランに追加する</button>
+                <button class="btn-mini btn-mini-ghost" data-suggestion-action="back">他の提案を見る</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="suggestion-item fade-seq" data-seq="6">
@@ -1381,6 +1570,13 @@ body {
             <div class="meta">推定 430kcal ・ 低カロリー・満足感重視</div>
             <div class="reason">「鍋」がお好きとのことなので、昆布だしベースのバリエーションを。豆乳鍋はリクエストにより候補から外しています。化学調味料を使わず素材の味を活かしました。</div>
             <div class="order">🥢 食べる順番（5ステップ）：①水・黒豆茶を一杯 → ②野菜・きのこから食べ進める → ③豆腐 → ④鍋の汁（昆布だし） → ⑤〆を入れる場合はうどん・雑炊を最後に少量。1口30回・20分以上かけて食べましょう。</div>
+            <div class="suggestion-cta">
+              <div class="cta-msg">✓ この献立を選びました。ミールプランに追加して、今日の食事として記録しましょう。</div>
+              <div class="cta-actions">
+                <button class="btn-mini btn-mini-primary" data-suggestion-action="plan">ミールプランに追加する</button>
+                <button class="btn-mini btn-mini-ghost" data-suggestion-action="back">他の提案を見る</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="suggestion-item fade-seq" data-seq="7">
@@ -1390,6 +1586,13 @@ body {
             <div class="meta">推定 500kcal ・ 外出先でも準備しやすい</div>
             <div class="reason">PFCバランスが崩れにくく、忙しい日でも選びやすい構成です。</div>
             <div class="order">🥢 食べる順番（5ステップ）：①水・黒豆茶を一杯 → ②スープの野菜 → ③サンドイッチの具（卵・鶏むね肉） → ④スープを飲み切る → ⑤パン部分は最後に少なめに。1口30回・20分以上かけて、血糖値の急上昇を抑えましょう。</div>
+            <div class="suggestion-cta">
+              <div class="cta-msg">✓ この献立を選びました。ミールプランに追加して、今日の食事として記録しましょう。</div>
+              <div class="cta-actions">
+                <button class="btn-mini btn-mini-primary" data-suggestion-action="plan">ミールプランに追加する</button>
+                <button class="btn-mini btn-mini-ghost" data-suggestion-action="back">他の提案を見る</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="advice-box fade-seq" data-seq="8">
@@ -1714,10 +1917,21 @@ body {
     document.querySelectorAll('#screen-meal [data-fill]').forEach(function (bar) {
       bar.style.width = '0%';
     });
+    document.querySelectorAll('#screen-meal .micro-ring').forEach(function (ring) {
+      ring.style.setProperty('--pct', '0');
+    });
+    var budgetRing = document.querySelector('#screen-meal .budget-ring .ring-fg');
+    if (budgetRing) {
+      budgetRing.style.transition = 'none';
+      budgetRing.setAttribute('stroke-dashoffset', budgetRing.getAttribute('stroke-dasharray'));
+    }
     var kcalEl = document.querySelector('#screen-meal [data-count-kcal]');
     var gramEl = document.querySelector('#screen-meal [data-count-gram]');
+    var remainEl = document.querySelector('#screen-meal [data-count-remain]');
     if (kcalEl) kcalEl.textContent = '0';
     if (gramEl) gramEl.textContent = '0';
+    if (remainEl) remainEl.textContent = '0';
+    resetSelectMealSuggestions();
   }
 
   function playMealDemo() {
@@ -1731,8 +1945,11 @@ body {
     var sequenced = Array.prototype.slice.call(document.querySelectorAll('#screen-meal [data-seq]'))
       .sort(function (a, b) { return (+a.dataset.seq) - (+b.dataset.seq); });
     var fillBars = Array.prototype.slice.call(document.querySelectorAll('#screen-meal [data-fill]'));
+    var microRings = Array.prototype.slice.call(document.querySelectorAll('#screen-meal .micro-ring'));
+    var budgetRing = document.querySelector('#screen-meal .budget-ring .ring-fg');
     var kcalEl = document.querySelector('#screen-meal [data-count-kcal]');
     var gramEl = document.querySelector('#screen-meal [data-count-gram]');
+    var remainEl = document.querySelector('#screen-meal [data-count-remain]');
     var shutter = frame.querySelector('.shutter');
     var flash = frame.querySelector('.shutter-flash');
 
@@ -1765,9 +1982,22 @@ body {
     later(function () {
       animateNumber(kcalEl, 720, 900);
       animateNumber(gramEl, 410, 900);
+      animateNumber(remainEl, 620, 900);
       fillBars.forEach(function (bar) {
         bar.style.width = bar.getAttribute('data-fill') + '%';
       });
+      microRings.forEach(function (ring) {
+        ring.style.setProperty('--pct', ring.dataset.pct);
+      });
+      if (budgetRing) {
+        var targetOffset = budgetRing.getAttribute('data-target-offset');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            budgetRing.style.transition = 'stroke-dashoffset 0.8s cubic-bezier(.22,.7,.2,1)';
+            budgetRing.setAttribute('stroke-dashoffset', targetOffset);
+          });
+        });
+      }
     }, afterSteps);
 
     sequenced.forEach(function (el, i) {
@@ -1929,6 +2159,45 @@ body {
     });
   }
 
+  var resetSelectMealSuggestions = function () {};
+
+  function initMealSuggestions() {
+    var card = document.getElementById('meal-suggestions');
+    if (!card) return;
+    var items = Array.prototype.slice.call(card.querySelectorAll('.suggestion-item'));
+    var advice = card.querySelector('.advice-box');
+
+    function resetSelection() {
+      items.forEach(function (it) {
+        it.classList.remove('is-selected', 'is-collapsed');
+      });
+      if (advice) advice.classList.remove('is-collapsed');
+    }
+    resetSelectMealSuggestions = resetSelection;
+
+    items.forEach(function (item) {
+      item.addEventListener('click', function (e) {
+        if (item.classList.contains('is-selected')) return;
+        if (e.target.closest('.suggestion-cta')) return;
+        items.forEach(function (it) {
+          it.classList.toggle('is-collapsed', it !== item);
+          it.classList.toggle('is-selected', it === item);
+        });
+        if (advice) advice.classList.add('is-collapsed');
+      });
+    });
+
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('[data-suggestion-action="back"]')) {
+        e.stopPropagation();
+        resetSelection();
+      } else if (e.target.closest('[data-suggestion-action="plan"]')) {
+        e.stopPropagation();
+        showScreen('mealplan');
+      }
+    });
+  }
+
   window.showScreen = function (name, el) {
     document.querySelectorAll('.screen').forEach(function (s) { s.classList.remove('active'); });
     var target = document.getElementById('screen-' + name);
@@ -1954,6 +2223,7 @@ body {
     initFavButtons();
     initMealEdit();
     initMealPlanStrip();
+    initMealSuggestions();
     // 食事画面が起点：「撮ったら、ぜんぶ出てくる」体験を到着直後に自動再生する
     setTimeout(playMealDemo, 700);
   });

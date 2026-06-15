@@ -133,6 +133,17 @@
         });
       });
     });
+
+    var microRings = document.querySelectorAll('.micro-ring');
+    microRings.forEach(function (mr) {
+      var target = mr.style.getPropertyValue('--pct');
+      mr.style.setProperty('--pct', '0');
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          mr.style.setProperty('--pct', target);
+        });
+      });
+    });
   }
 
   function initInputTabs() {
@@ -240,6 +251,42 @@
     });
   }
 
+  function initMealSuggestions() {
+    var card = document.getElementById('meal-suggestions');
+    if (!card) return;
+    var items = Array.prototype.slice.call(card.querySelectorAll('.suggestion-item'));
+    var advice = card.querySelector('.advice-box');
+
+    function resetSelection() {
+      items.forEach(function (it) {
+        it.classList.remove('is-selected', 'is-collapsed');
+      });
+      if (advice) advice.classList.remove('is-collapsed');
+    }
+
+    items.forEach(function (item) {
+      item.addEventListener('click', function (e) {
+        if (item.classList.contains('is-selected')) return;
+        if (e.target.closest('.suggestion-cta')) return;
+        items.forEach(function (it) {
+          it.classList.toggle('is-collapsed', it !== item);
+          it.classList.toggle('is-selected', it === item);
+        });
+        if (advice) advice.classList.add('is-collapsed');
+      });
+    });
+
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('[data-suggestion-action="back"]')) {
+        e.stopPropagation();
+        resetSelection();
+      } else if (e.target.closest('[data-suggestion-action="plan"]')) {
+        e.stopPropagation();
+        window.location.href = 'mealplan.html';
+      }
+    });
+  }
+
   function initMealPlanStrip() {
     var days = Array.prototype.slice.call(document.querySelectorAll('.plan-day'));
     var label = document.getElementById('plan-date-label');
@@ -261,5 +308,6 @@
     initFavButtons();
     initMealEdit();
     initMealPlanStrip();
+    initMealSuggestions();
   });
 })();

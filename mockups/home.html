@@ -151,20 +151,43 @@
       </div>
 
       <div class="card fade-seq" data-seq="2">
-        <div class="row" style="margin-bottom:10px;">
-          <span class="section-title" style="margin:0;">今日の摂取バランス</span>
-          <span class="pill muted">残り 約 620kcal</span>
+        <div class="section-title" style="margin:0 0 14px;">今日の摂取バランス</div>
+        <div class="budget-top">
+          <div class="ring-wrap budget-ring">
+            <svg viewBox="0 0 96 96">
+              <circle class="ring-bg" cx="48" cy="48" r="42" fill="none" stroke-width="8"/>
+              <circle class="ring-fg" cx="48" cy="48" r="42" fill="none" stroke-width="8"
+                stroke-dasharray="263.9" stroke-dashoffset="173"/>
+            </svg>
+            <div class="ring-center">
+              <div class="rem-label">残り</div>
+              <div class="num">620</div>
+              <div class="max">kcal</div>
+            </div>
+          </div>
+          <div class="budget-side">
+            <div class="budget-goal">目標 <strong>1,800</strong> キロカロリー</div>
+            <div class="macro-row">
+              <span class="micro-ring" style="--ring-c:var(--teal-600); --pct:62;"></span>
+              <span class="macro-name">タンパク質</span>
+              <span class="macro-val">81<small>/130g</small></span>
+            </div>
+            <div class="macro-row">
+              <span class="micro-ring" style="--ring-c:var(--amber-600); --pct:48;"></span>
+              <span class="macro-name">脂質</span>
+              <span class="macro-val">26<small>/55g</small></span>
+            </div>
+            <div class="macro-row">
+              <span class="micro-ring" style="--ring-c:var(--sky-600); --pct:70;"></span>
+              <span class="macro-name">炭水化物</span>
+              <span class="macro-val">161<small>/230g</small></span>
+            </div>
+          </div>
         </div>
-        <div style="font-size:11.5px;color:var(--ink-soft);font-weight:700;">タンパク質 <span style="float:right;color:var(--ink);">62%</span></div>
-        <div class="bar-track"><div class="bar-fill animate-fill" data-fill="62" style="width:0%;"></div></div>
-        <div style="font-size:11.5px;color:var(--ink-soft);font-weight:700;margin-top:12px;">脂質 <span style="float:right;color:var(--ink);">48%</span></div>
-        <div class="bar-track"><div class="bar-fill animate-fill" data-fill="48" style="width:0%; background:linear-gradient(90deg,#f6c98a,var(--amber-600));"></div></div>
-        <div style="font-size:11.5px;color:var(--ink-soft);font-weight:700;margin-top:12px;">炭水化物 <span style="float:right;color:var(--ink);">70%</span></div>
-        <div class="bar-track"><div class="bar-fill animate-fill" data-fill="70" style="width:0%; background:linear-gradient(90deg,#9ec3e6,var(--sky-600));"></div></div>
       </div>
 
       <div class="section-title">🍽 今日の昼食のご提案<span class="more">5案</span></div>
-      <div class="card">
+      <div class="card" id="meal-suggestions">
         <div class="suggestion-item fade-seq" data-seq="3">
           <div class="num">1</div>
           <div>
@@ -172,6 +195,13 @@
             <div class="meta">推定 480kcal ・ たんぱく質 35g</div>
             <div class="reason">内臓脂肪・体脂肪率の改善が最優先のため、高たんぱく・低脂質を意識。消化にも優しく、回復をサポートします。</div>
             <div class="order">🥢 食べる順番（5ステップ）：①水・黒豆茶を一杯 → ②温野菜 → ③鶏むね肉 → ④スープ → ⑤（主食を添えるなら）雑穀ご飯は最後に少なめに。1口30回・20分以上かけて、ゆっくり食べましょう。</div>
+            <div class="suggestion-cta">
+              <div class="cta-msg">✓ この献立を選びました。ミールプランに追加して、今日の食事として記録しましょう。</div>
+              <div class="cta-actions">
+                <button class="btn-mini btn-mini-primary" data-suggestion-action="plan">ミールプランに追加する</button>
+                <button class="btn-mini btn-mini-ghost" data-suggestion-action="back">他の提案を見る</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="suggestion-item fade-seq" data-seq="4">
@@ -181,6 +211,13 @@
             <div class="meta">推定 540kcal ・ 残りカロリー枠にぴったり</div>
             <div class="reason">外食・中食でも選びやすいよう、コンビニで揃えられる組み合わせも用意しました。</div>
             <div class="order">🥢 食べる順番（5ステップ）：①水・黒豆茶を一杯 → ②味噌汁の野菜・きのこ・海藻 → ③サラダチキン → ④味噌汁の汁 → ⑤雑穀おにぎりは最後に少なめに。1口30回・20分以上かけて食べましょう。</div>
+            <div class="suggestion-cta">
+              <div class="cta-msg">✓ この献立を選びました。ミールプランに追加して、今日の食事として記録しましょう。</div>
+              <div class="cta-actions">
+                <button class="btn-mini btn-mini-primary" data-suggestion-action="plan">ミールプランに追加する</button>
+                <button class="btn-mini btn-mini-ghost" data-suggestion-action="back">他の提案を見る</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="suggestion-item fade-seq" data-seq="5">
@@ -190,6 +227,13 @@
             <div class="meta">推定 560kcal ・ たんぱく質 32g</div>
             <div class="reason">内臓脂肪レベルの改善に役立つ青魚・食物繊維を中心に構成しました。</div>
             <div class="order">🥢 食べる順番（5ステップ）：①水・黒豆茶を一杯 → ②ひじきの煮物（海藻・野菜） → ③鯖の塩焼き → ④汁物があれば先に一口 → ⑤玄米は最後に少なめに。1口30回・20分以上かけて、よく噛んで食べましょう。</div>
+            <div class="suggestion-cta">
+              <div class="cta-msg">✓ この献立を選びました。ミールプランに追加して、今日の食事として記録しましょう。</div>
+              <div class="cta-actions">
+                <button class="btn-mini btn-mini-primary" data-suggestion-action="plan">ミールプランに追加する</button>
+                <button class="btn-mini btn-mini-ghost" data-suggestion-action="back">他の提案を見る</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="suggestion-item fade-seq" data-seq="6">
@@ -199,6 +243,13 @@
             <div class="meta">推定 430kcal ・ 低カロリー・満足感重視</div>
             <div class="reason">「鍋」がお好きとのことなので、昆布だしベースのバリエーションを。豆乳鍋はリクエストにより候補から外しています。化学調味料を使わず素材の味を活かしました。</div>
             <div class="order">🥢 食べる順番（5ステップ）：①水・黒豆茶を一杯 → ②野菜・きのこから食べ進める → ③豆腐 → ④鍋の汁（昆布だし） → ⑤〆を入れる場合はうどん・雑炊を最後に少量。1口30回・20分以上かけて食べましょう。</div>
+            <div class="suggestion-cta">
+              <div class="cta-msg">✓ この献立を選びました。ミールプランに追加して、今日の食事として記録しましょう。</div>
+              <div class="cta-actions">
+                <button class="btn-mini btn-mini-primary" data-suggestion-action="plan">ミールプランに追加する</button>
+                <button class="btn-mini btn-mini-ghost" data-suggestion-action="back">他の提案を見る</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="suggestion-item fade-seq" data-seq="7">
@@ -208,6 +259,13 @@
             <div class="meta">推定 500kcal ・ 外出先でも準備しやすい</div>
             <div class="reason">PFCバランスが崩れにくく、忙しい日でも選びやすい構成です。</div>
             <div class="order">🥢 食べる順番（5ステップ）：①水・黒豆茶を一杯 → ②スープの野菜 → ③サンドイッチの具（卵・鶏むね肉） → ④スープを飲み切る → ⑤パン部分は最後に少なめに。1口30回・20分以上かけて、血糖値の急上昇を抑えましょう。</div>
+            <div class="suggestion-cta">
+              <div class="cta-msg">✓ この献立を選びました。ミールプランに追加して、今日の食事として記録しましょう。</div>
+              <div class="cta-actions">
+                <button class="btn-mini btn-mini-primary" data-suggestion-action="plan">ミールプランに追加する</button>
+                <button class="btn-mini btn-mini-ghost" data-suggestion-action="back">他の提案を見る</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="advice-box fade-seq" data-seq="8">
