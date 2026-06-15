@@ -97,6 +97,24 @@ body {
 }
 .screen::-webkit-scrollbar { display: none; }
 
+/* On real phones, drop the desktop "device mockup" chrome and let the
+   app fill the whole viewport like an installed app. */
+@media (max-width: 520px) {
+  body { padding: 0; background: var(--card); }
+  .phone {
+    width: 100%;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+  }
+  .statusbar { flex-shrink: 0; padding-top: env(safe-area-inset-top, 0px); }
+  .screen { height: auto; flex: 1; min-height: 0; }
+}
+
 .content {
   flex: 1;
   padding: 6px 20px 18px;
@@ -737,12 +755,14 @@ body {
 }
 .search-box input {
   flex: 1;
+  min-width: 0;
   border: none;
   background: transparent;
   font-size: 13px;
   font-family: inherit;
   color: var(--ink);
   outline: none;
+  text-overflow: ellipsis;
 }
 .search-box input::placeholder { color: #aab4b0; }
 
