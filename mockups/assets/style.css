@@ -293,6 +293,7 @@ body {
   stroke: var(--coral-600);
   stroke-linecap: round;
   transition: stroke-dashoffset 0.8s cubic-bezier(.22,.7,.2,1);
+  animation: budget-arc-live 2.4s ease-in-out infinite;
 }
 .budget-ring .ring-center .rem-label {
   font-size: 10px;
@@ -306,6 +307,7 @@ body {
   color: var(--ink);
   line-height: 1.15;
   letter-spacing: -0.02em;
+  animation: budget-num-live 2.4s ease-in-out infinite;
 }
 .budget-ring .ring-center .max {
   font-size: 10px;
@@ -314,6 +316,38 @@ body {
   opacity: 1;
   margin-top: 0;
 }
+
+@keyframes budget-arc-live {
+  0%, 100% { filter: drop-shadow(0 0 1px rgba(227,106,93,0.15)); }
+  50%       { filter: drop-shadow(0 0 8px rgba(227,106,93,0.6)); }
+}
+@keyframes budget-num-live {
+  0%, 100% { opacity: 1; color: var(--ink); }
+  50%       { opacity: 0.68; color: var(--coral-600); }
+}
+
+.water-card { padding: 16px 18px; }
+.water-main { display: flex; align-items: center; gap: 16px; }
+.water-left { flex: 1; }
+.water-amount { font-size: 30px; font-weight: 900; color: var(--ink); line-height: 1; margin-bottom: 6px; }
+.water-unit { font-size: 16px; font-weight: 700; }
+.water-goal { font-size: 12px; font-weight: 700; color: var(--ink-soft); margin-bottom: 8px; }
+.water-cup-pill { font-size: 11px; font-weight: 700; color: var(--blue-600); background: var(--blue-100); border-radius: 20px; padding: 3px 10px; display: inline-block; }
+.water-add-btn {
+  width: 64px; height: 72px;
+  background: linear-gradient(180deg, rgba(210,232,255,0.8) 0%, var(--blue-100) 100%);
+  border: 1.5px solid rgba(58,130,214,0.22);
+  border-radius: 14px 14px 22px 22px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; color: var(--blue-600);
+  box-shadow: 0 3px 10px rgba(58,130,214,0.12);
+  transition: transform 0.1s ease, opacity 0.1s ease;
+  flex-shrink: 0;
+}
+.water-add-btn:active { transform: scale(0.88); opacity: 0.8; }
+.water-bar-track { height: 5px; background: var(--blue-100); border-radius: 3px; margin-top: 14px; }
+.water-bar-fill { height: 100%; background: linear-gradient(90deg, var(--sky-600), var(--blue-600)); border-radius: 3px; transition: width 0.35s cubic-bezier(.22,.7,.2,1); }
 
 .budget-side { flex: 1; min-width: 0; }
 .budget-goal {

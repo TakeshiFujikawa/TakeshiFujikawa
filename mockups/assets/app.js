@@ -287,6 +287,22 @@
     });
   }
 
+  function initWaterTracker() {
+    Array.prototype.slice.call(document.querySelectorAll('.water-add-btn')).forEach(function (btn) {
+      var card = btn.closest('.water-card');
+      if (!card) return;
+      var mlEl = card.querySelector('.water-ml');
+      var barFill = card.querySelector('.water-bar-fill');
+      var goal = 2000;
+      var amount = parseInt(mlEl.textContent.replace(/,/g, ''), 10) || 0;
+      btn.addEventListener('click', function () {
+        amount += 200;
+        mlEl.textContent = amount.toLocaleString('ja-JP');
+        if (barFill) barFill.style.width = Math.min(100, Math.round(amount / goal * 100)) + '%';
+      });
+    });
+  }
+
   function initMealPlanStrip() {
     var days = Array.prototype.slice.call(document.querySelectorAll('.plan-day'));
     var label = document.getElementById('plan-date-label');
@@ -309,5 +325,6 @@
     initMealEdit();
     initMealPlanStrip();
     initMealSuggestions();
+    initWaterTracker();
   });
 })();

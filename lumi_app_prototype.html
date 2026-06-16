@@ -305,6 +305,7 @@ body {
   stroke: var(--coral-600);
   stroke-linecap: round;
   transition: stroke-dashoffset 0.8s cubic-bezier(.22,.7,.2,1);
+  animation: budget-arc-live 2.4s ease-in-out infinite;
 }
 .budget-ring .ring-center .rem-label {
   font-size: 10px;
@@ -318,6 +319,7 @@ body {
   color: var(--ink);
   line-height: 1.15;
   letter-spacing: -0.02em;
+  animation: budget-num-live 2.4s ease-in-out infinite;
 }
 .budget-ring .ring-center .max {
   font-size: 10px;
@@ -326,6 +328,38 @@ body {
   opacity: 1;
   margin-top: 0;
 }
+
+@keyframes budget-arc-live {
+  0%, 100% { filter: drop-shadow(0 0 1px rgba(227,106,93,0.15)); }
+  50%       { filter: drop-shadow(0 0 8px rgba(227,106,93,0.6)); }
+}
+@keyframes budget-num-live {
+  0%, 100% { opacity: 1; color: var(--ink); }
+  50%       { opacity: 0.68; color: var(--coral-600); }
+}
+
+.water-card { padding: 16px 18px; }
+.water-main { display: flex; align-items: center; gap: 16px; }
+.water-left { flex: 1; }
+.water-amount { font-size: 30px; font-weight: 900; color: var(--ink); line-height: 1; margin-bottom: 6px; }
+.water-unit { font-size: 16px; font-weight: 700; }
+.water-goal { font-size: 12px; font-weight: 700; color: var(--ink-soft); margin-bottom: 8px; }
+.water-cup-pill { font-size: 11px; font-weight: 700; color: var(--blue-600); background: var(--blue-100); border-radius: 20px; padding: 3px 10px; display: inline-block; }
+.water-add-btn {
+  width: 64px; height: 72px;
+  background: linear-gradient(180deg, rgba(210,232,255,0.8) 0%, var(--blue-100) 100%);
+  border: 1.5px solid rgba(58,130,214,0.22);
+  border-radius: 14px 14px 22px 22px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; color: var(--blue-600);
+  box-shadow: 0 3px 10px rgba(58,130,214,0.12);
+  transition: transform 0.1s ease, opacity 0.1s ease;
+  flex-shrink: 0;
+}
+.water-add-btn:active { transform: scale(0.88); opacity: 0.8; }
+.water-bar-track { height: 5px; background: var(--blue-100); border-radius: 3px; margin-top: 14px; }
+.water-bar-fill { height: 100%; background: linear-gradient(90deg, var(--sky-600), var(--blue-600)); border-radius: 3px; transition: width 0.35s cubic-bezier(.22,.7,.2,1); }
 
 .budget-side { flex: 1; min-width: 0; }
 .budget-goal {
@@ -1512,13 +1546,21 @@ body {
               <span class="macro-name">炭水化物</span>
               <span class="macro-val">161<small>/230g</small></span>
             </div>
-            <div class="macro-row">
-              <span class="micro-ring" style="--ring-c:var(--blue-600);" data-pct="40"></span>
-              <span class="macro-name">水分</span>
-              <span class="macro-val">0.8<small>/2.0L</small></span>
-            </div>
           </div>
         </div>
+      </div>
+
+      <div class="section-title">💧 水を飲む</div>
+      <div class="card water-card">
+        <div class="water-main">
+          <div class="water-left">
+            <div class="water-amount"><span class="water-ml">800</span><span class="water-unit"> ml</span></div>
+            <div class="water-goal">目標: 2,000ml</div>
+            <span class="water-cup-pill">1カップ = 200ml</span>
+          </div>
+          <button class="water-add-btn" aria-label="水を追加">＋</button>
+        </div>
+        <div class="water-bar-track"><div class="water-bar-fill" style="width:40%;"></div></div>
       </div>
 
       <div class="section-title">🍽 今日の昼食のご提案<span class="more">9案</span></div>
@@ -1977,6 +2019,7 @@ body {
   var mealPlaying = false;
   var mealDemoStarted = false;
   var mealTimers = [];
+  var liveCounterTimer = null;
 
   function resetMealDemo() {
     document.querySelectorAll('#screen-meal .auto-flow .dot').forEach(function (dot) {
@@ -2003,6 +2046,7 @@ body {
     if (kcalEl) kcalEl.textContent = '0';
     if (gramEl) gramEl.textContent = '0';
     if (remainEl) remainEl.textContent = '0';
+    if (liveCounterTimer) { clearInterval(liveCounterTimer); liveCounterTimer = null; }
     resetSelectMealSuggestions();
   }
 
@@ -2071,6 +2115,15 @@ body {
         });
       }
     }, afterSteps);
+
+    later(function () {
+      var base = 620;
+      liveCounterTimer = setInterval(function () {
+        if (!remainEl) return;
+        var v = base + Math.round((Math.random() - 0.45) * 4);
+        remainEl.textContent = v.toLocaleString('ja-JP');
+      }, 2500);
+    }, afterSteps + 1100);
 
     sequenced.forEach(function (el, i) {
       later(function () { el.classList.add('is-shown'); }, afterSteps + 300 + i * SEQ_GAP);
@@ -2218,6 +2271,22 @@ body {
     });
   }
 
+  function initWaterTracker() {
+    document.querySelectorAll('.water-add-btn').forEach(function (btn) {
+      var card = btn.closest('.water-card');
+      if (!card) return;
+      var mlEl = card.querySelector('.water-ml');
+      var barFill = card.querySelector('.water-bar-fill');
+      var goal = 2000;
+      var amount = parseInt(mlEl.textContent.replace(/,/g, ''), 10) || 0;
+      btn.addEventListener('click', function () {
+        amount += 200;
+        mlEl.textContent = amount.toLocaleString('ja-JP');
+        if (barFill) barFill.style.width = Math.min(100, Math.round(amount / goal * 100)) + '%';
+      });
+    });
+  }
+
   function initMealPlanStrip() {
     var days = Array.prototype.slice.call(document.querySelectorAll('.plan-day'));
     var label = document.getElementById('plan-date-label');
@@ -2296,6 +2365,7 @@ body {
     initMealEdit();
     initMealPlanStrip();
     initMealSuggestions();
+    initWaterTracker();
     // 食事画面が起点：「撮ったら、ぜんぶ出てくる」体験を到着直後に自動再生する
     setTimeout(playMealDemo, 700);
   });
