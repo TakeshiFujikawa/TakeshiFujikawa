@@ -301,17 +301,19 @@ body {
   gap: 18px;
 }
 .budget-ring .ring-bg { stroke: var(--line); }
+.ring-wrap.budget-ring { animation: budget-wrap-breathe 2s ease-in-out infinite; }
 .budget-ring .ring-fg {
   stroke: var(--coral-600);
   stroke-linecap: round;
   transition: stroke-dashoffset 0.8s cubic-bezier(.22,.7,.2,1);
-  animation: budget-arc-live 2.4s ease-in-out infinite;
+  animation: budget-arc-live 2s ease-in-out infinite;
 }
 .budget-ring .ring-center .rem-label {
   font-size: 10px;
   font-weight: 700;
   color: var(--ink-soft);
   letter-spacing: 0.08em;
+  animation: budget-label-pulse 2s ease-in-out infinite;
 }
 .budget-ring .ring-center .num {
   font-size: 22px;
@@ -319,7 +321,11 @@ body {
   color: var(--ink);
   line-height: 1.15;
   letter-spacing: -0.02em;
-  animation: budget-num-live 2.4s ease-in-out infinite;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+.budget-ring .ring-center .num.is-updating {
+  transform: scale(1.12);
+  color: var(--coral-600);
 }
 .budget-ring .ring-center .max {
   font-size: 10px;
@@ -329,13 +335,17 @@ body {
   margin-top: 0;
 }
 
-@keyframes budget-arc-live {
-  0%, 100% { filter: drop-shadow(0 0 1px rgba(227,106,93,0.15)); }
-  50%       { filter: drop-shadow(0 0 8px rgba(227,106,93,0.6)); }
+@keyframes budget-wrap-breathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.03); }
 }
-@keyframes budget-num-live {
-  0%, 100% { opacity: 1; color: var(--ink); }
-  50%       { opacity: 0.68; color: var(--coral-600); }
+@keyframes budget-arc-live {
+  0%, 100% { filter: drop-shadow(0 0 2px rgba(227,106,93,0.2)); }
+  50%       { filter: drop-shadow(0 0 14px rgba(227,106,93,0.75)); }
+}
+@keyframes budget-label-pulse {
+  0%, 100% { opacity: 0.65; }
+  50%       { opacity: 1; }
 }
 
 .water-card { padding: 16px 18px; }
@@ -2118,11 +2128,20 @@ body {
 
     later(function () {
       var base = 620;
+      var dashArray = 263.9;
+      var goal = 1800;
       liveCounterTimer = setInterval(function () {
         if (!remainEl) return;
-        var v = base + Math.round((Math.random() - 0.45) * 4);
-        remainEl.textContent = v.toLocaleString('ja-JP');
-      }, 2500);
+        var delta = Math.round((Math.random() - 0.5) * 60);
+        var newVal = Math.max(560, Math.min(700, base + delta));
+        remainEl.textContent = newVal.toLocaleString('ja-JP');
+        remainEl.classList.add('is-updating');
+        setTimeout(function () { remainEl.classList.remove('is-updating'); }, 200);
+        if (budgetRing) {
+          budgetRing.setAttribute('stroke-dashoffset',
+            (dashArray * (1 - newVal / goal)).toFixed(1));
+        }
+      }, 1500);
     }, afterSteps + 1100);
 
     sequenced.forEach(function (el, i) {
