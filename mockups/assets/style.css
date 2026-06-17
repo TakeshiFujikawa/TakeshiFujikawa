@@ -359,6 +359,77 @@ body {
 .water-bar-track { height: 5px; background: var(--blue-100); border-radius: 3px; margin-top: 14px; }
 .water-bar-fill { height: 100%; background: linear-gradient(90deg, var(--sky-600), var(--blue-600)); border-radius: 3px; transition: width 0.35s cubic-bezier(.22,.7,.2,1); }
 
+.routine-card { padding: 6px 18px 18px; }
+.routine-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  cursor: pointer;
+  user-select: none;
+}
+.routine-check {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; color: #fff;
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+.routine-row:active .routine-check { transform: scale(0.88); }
+.routine-row.done { cursor: default; }
+.routine-row.done .routine-check { background: var(--teal-600); border-color: var(--teal-600); }
+.routine-label {
+  flex: 1;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+.routine-row.done .routine-label { color: var(--ink-soft); opacity: 0.7; }
+.routine-meta {
+  font-size: 11px;
+  font-weight: 700;
+  color: #bcc4c1;
+  white-space: nowrap;
+}
+.routine-row.done .routine-meta { color: var(--teal-600); }
+.routine-hint {
+  margin-top: 8px;
+  padding: 11px 14px;
+  background: var(--blue-100);
+  color: var(--blue-600);
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.routine-hint.all-done { background: var(--teal-100); color: var(--teal-700); }
+.routine-complete-btn {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--teal-600), var(--teal-700));
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 14px 28px -10px rgba(42,147,121,0.55);
+}
+.routine-complete-btn:disabled {
+  background: #eef1f0;
+  color: var(--ink-soft);
+  box-shadow: none;
+  opacity: 0.8;
+  cursor: default;
+}
+
 .budget-side { flex: 1; min-width: 0; }
 .budget-goal {
   font-size: 11.5px;

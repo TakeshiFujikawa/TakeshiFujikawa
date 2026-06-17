@@ -303,6 +303,65 @@
     });
   }
 
+  function initRoutineChecklist() {
+    Array.prototype.slice.call(document.querySelectorAll('.routine-card')).forEach(function (card) {
+      var items = Array.prototype.slice.call(card.querySelectorAll('[data-routine-item]'));
+      var hint = card.querySelector('[data-routine-hint]');
+      var completeBtn = card.querySelector('[data-routine-complete]');
+      if (!items.length) return;
+
+      function nowLabel() {
+        var d = new Date();
+        return d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
+      }
+
+      function markDone(item) {
+        if (item.classList.contains('done')) return;
+        item.classList.add('done');
+        item.querySelector('.routine-check').textContent = '✓';
+        item.querySelector('.routine-meta').textContent = nowLabel();
+      }
+
+      function refresh() {
+        var remaining = items.filter(function (it) { return !it.classList.contains('done'); }).length;
+        if (hint) {
+          if (remaining === 0) {
+            hint.textContent = '朝のルーティンが完了しました！🎉';
+            hint.classList.add('all-done');
+          } else {
+            hint.textContent = '残り' + remaining + '項目を済ませたら朝のルーティンが完了します！🎉';
+            hint.classList.remove('all-done');
+          }
+        }
+        if (completeBtn) {
+          if (remaining === 0) {
+            completeBtn.textContent = '完了しました ✓';
+            completeBtn.disabled = true;
+          } else {
+            completeBtn.textContent = '朝のルーティンを完了する';
+            completeBtn.disabled = false;
+          }
+        }
+      }
+
+      items.forEach(function (item) {
+        item.addEventListener('click', function () {
+          markDone(item);
+          refresh();
+        });
+      });
+
+      if (completeBtn) {
+        completeBtn.addEventListener('click', function () {
+          items.forEach(markDone);
+          refresh();
+        });
+      }
+
+      refresh();
+    });
+  }
+
   function initMealPlanStrip() {
     var days = Array.prototype.slice.call(document.querySelectorAll('.plan-day'));
     var label = document.getElementById('plan-date-label');
@@ -326,5 +385,6 @@
     initMealPlanStrip();
     initMealSuggestions();
     initWaterTracker();
+    initRoutineChecklist();
   });
 })();
