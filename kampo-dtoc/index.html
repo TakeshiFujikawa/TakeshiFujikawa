@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>和漢養寿堂｜創業の知恵を、毎日のひとさじに｜公式オンラインストア</title>
+<meta name="description" content="14種の和漢生薬をブレンドした和漢養寿堂の公式DtoCサイト。冷え・疲労・虚弱体質など、なんとなくの不調に寄り添う漢方サプリメントを直販でお届けします。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- ============ ヘッダー ============ -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <span class="top-bar-item">創業 文化元年からの和漢の知恵</span>
+    <div class="top-bar-links">
+      <a href="#faq">よくある質問</a>
+      <a href="#">お問い合わせ 0120-XXX-XXX</a>
+      <a href="#">マイページ</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="#top" class="logo" aria-label="和漢養寿堂 トップページ">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="40" height="40"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2"/><text x="24" y="31" text-anchor="middle" font-size="20" font-family="serif" fill="currentColor">壽</text></svg>
+      </span>
+      <span class="logo-text">和漢養寿堂</span>
+    </a>
+
+    <nav class="main-nav" id="main-nav">
+      <a href="#check">健康チェック</a>
+      <a href="#products">商品一覧</a>
+      <a href="#about">和漢養寿堂について</a>
+      <a href="#subscription">定期コース</a>
+      <a href="#faq">よくある質問</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="cart-btn" id="cart-btn" aria-label="カート">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M3 4h2l2.4 12.4a1 1 0 001 .8h9.2a1 1 0 001-.78L20 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="currentColor"/><circle cx="17" cy="20" r="1.4" fill="currentColor"/></svg>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+      <a href="#products" class="btn btn-primary header-cta">お試しセットを申込む</a>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ヒーロー ============ -->
+<main id="top">
+<section class="hero" id="hero">
+  <div class="hero-pattern" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="hero-eyebrow">創業 文化元年 ― 和漢の知恵を、現代の一滴に</p>
+      <h1>病気ではないけれど、<br>なんとなく不調な毎日に。</h1>
+      <p class="hero-lead">14種の和漢生薬をブレンドした和漢養寿堂のサプリメントは、冷え・疲れ・虚弱体質など「未病（みびょう）」のサインにそっと寄り添います。</p>
+      <div class="hero-actions">
+        <a href="#products" class="btn btn-primary btn-lg">送料無料で試してみる</a>
+        <a href="#check" class="btn btn-ghost btn-lg">無料・体質チェックをする</a>
+      </div>
+      <p class="hero-note">※ 初回限定・お試しセットは数量限定です</p>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 280 360" class="bottle-illust">
+        <ellipse cx="140" cy="340" rx="90" ry="14" fill="rgba(60,30,20,0.12)"/>
+        <path d="M105 70 L105 40 Q105 20 125 20 L155 20 Q175 20 175 40 L175 70 L195 110 L195 320 Q195 335 180 335 L100 335 Q85 335 85 320 L85 110 Z" fill="#7a1f2e"/>
+        <rect x="105" y="20" width="70" height="16" fill="#c9a227"/>
+        <rect x="95" y="140" width="90" height="120" rx="4" fill="#fbf3df" stroke="#c9a227" stroke-width="2"/>
+        <text x="140" y="190" text-anchor="middle" font-family="serif" font-size="22" fill="#7a1f2e">和漢</text>
+        <text x="140" y="218" text-anchor="middle" font-family="serif" font-size="22" fill="#7a1f2e">養寿</text>
+        <text x="140" y="246" text-anchor="middle" font-size="11" fill="#9a7a2a">十四味配合</text>
+        <g opacity="0.9">
+          <circle cx="50" cy="90" r="3" fill="#9cae6b"/>
+          <circle cx="230" cy="120" r="4" fill="#9cae6b"/>
+          <circle cx="60" cy="280" r="4" fill="#c9a227"/>
+          <circle cx="225" cy="300" r="3" fill="#c9a227"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="campaign-strip">
+    <span class="campaign-label">期間限定キャンペーン</span>
+    <span class="campaign-text">初回限定セットが送料無料・特別価格</span>
+    <span class="campaign-timer" id="countdown" aria-live="polite">--日 --:--:--</span>
+  </div>
+</section>
+
+<!-- ============ 体質チェック ============ -->
+<section class="check-section" id="check">
+  <div class="container">
+    <p class="section-eyebrow">無料セルフチェック</p>
+    <h2 class="section-title">あなたの不調、いくつ当てはまりますか？</h2>
+    <p class="section-lead">気になる項目を選ぶだけ。今のあなたに合う和漢のとり方をご提案します。</p>
+
+    <div class="check-grid" id="check-grid">
+      <button class="check-item" data-symptom>手足の冷えが気になる</button>
+      <button class="check-item" data-symptom>季節の変わり目に体調を崩しやすい</button>
+      <button class="check-item" data-symptom>朝起きるのがつらい・だるさが続く</button>
+      <button class="check-item" data-symptom>食欲がない・胃腸が弱い</button>
+      <button class="check-item" data-symptom>ストレスで眠りが浅い</button>
+      <button class="check-item" data-symptom>病後・術後で体力が落ちている</button>
+      <button class="check-item" data-symptom>肩こり・血色の悪さが気になる</button>
+      <button class="check-item" data-symptom>なんとなく不調だが病院に行くほどでもない</button>
+    </div>
+
+    <div class="check-result" id="check-result">
+      <div class="check-result-count">
+        当てはまる項目 <span id="check-count">0</span> 個
+      </div>
+      <p class="check-result-message" id="check-message">気になる項目をタップして、あなたに合うタイプを見つけましょう。</p>
+      <a href="#products" class="btn btn-primary" id="check-cta">おすすめ商品を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 和漢養寿堂について ============ -->
+<section class="about-section" id="about">
+  <div class="container about-grid">
+    <div class="about-copy">
+      <p class="section-eyebrow">和漢養寿堂について</p>
+      <h2 class="section-title">和漢のチカラで、<br>内側からじんわり整える。</h2>
+      <p>創業以来、変わらぬ想いで生薬と向き合ってきました。一つひとつの原料を吟味し、伝統の配合バランスを大切にしながら、現代の暮らしに寄り添う形へと仕立てています。</p>
+      <p>人参・桂皮・地黄・紅花などをはじめとする14種の和漢生薬を独自配合。「ちょっと不調」に丁寧に向き合う、毎日の習慣としての和漢サプリメントです。</p>
+      <a href="#" class="text-link">和漢養寿堂のものづくりをもっと知る →</a>
+    </div>
+    <div class="herb-grid" id="herb-grid">
+      <div class="herb-card"><span class="herb-name">人参（にんじん）</span><span class="herb-desc">滋養強壮の代表的生薬</span></div>
+      <div class="herb-card"><span class="herb-name">桂皮（けいひ）</span><span class="herb-desc">からだを温める働き</span></div>
+      <div class="herb-card"><span class="herb-name">地黄（じおう）</span><span class="herb-desc">血のめぐりをサポート</span></div>
+      <div class="herb-card"><span class="herb-name">紅花（こうか）</span><span class="herb-desc">巡りを整える生薬</span></div>
+      <div class="herb-card"><span class="herb-name">丁香（ちょうこう）</span><span class="herb-desc">胃腸の働きを助ける</span></div>
+      <div class="herb-card"><span class="herb-name">大棗（たいそう）</span><span class="herb-desc">穏やかに体を支える</span></div>
+      <div class="herb-card more-herb">他8種の<br>和漢生薬を独自配合</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 商品ラインナップ ============ -->
+<section class="products-section" id="products">
+  <div class="container">
+    <p class="section-eyebrow">商品ラインナップ</p>
+    <h2 class="section-title">あなたの不調に合わせて選べる、4つのタイプ</h2>
+
+    <div class="filter-tabs" id="filter-tabs" role="tablist">
+      <button class="filter-tab active" data-filter="all">すべて</button>
+      <button class="filter-tab" data-filter="standard">定番</button>
+      <button class="filter-tab" data-filter="drink">ドリンク</button>
+      <button class="filter-tab" data-filter="night">夜用</button>
+      <button class="filter-tab" data-filter="caffeine-free">ノンカフェイン</button>
+    </div>
+
+    <div class="product-grid" id="product-grid">
+
+      <article class="product-card" data-category="standard" id="standard">
+        <div class="product-badge">定番人気</div>
+        <div class="product-visual"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="#fbf3df" stroke="#c9a227" stroke-width="3"/><text x="50" y="58" text-anchor="middle" font-family="serif" font-size="16" fill="#7a1f2e">定番</text></svg></div>
+        <h3>和漢養寿 粒タイプ</h3>
+        <p class="product-desc">14種の生薬を1日3粒に凝縮。毎日の土台づくりに。</p>
+        <div class="product-price" data-single="4980" data-sub="4233">
+          <span class="price-value">¥4,980</span><span class="price-unit">/ 30日分</span>
+        </div>
+        <div class="plan-toggle" role="group" aria-label="購入プラン">
+          <button class="plan-btn active" data-plan="single">単品購入</button>
+          <button class="plan-btn" data-plan="sub">定期コース（15%OFF）</button>
+        </div>
+        <button class="btn btn-primary add-cart-btn">カートに入れる</button>
+      </article>
+
+      <article class="product-card" data-category="drink" id="drink">
+        <div class="product-badge">飲みやすさNo.1</div>
+        <div class="product-visual"><svg viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" rx="6" fill="#fbf3df" stroke="#c9a227" stroke-width="3"/><text x="50" y="55" text-anchor="middle" font-family="serif" font-size="14" fill="#7a1f2e">drink</text></svg></div>
+        <h3>和漢養寿 ドリンクタイプ</h3>
+        <p class="product-desc">1本にぎゅっと凝縮。忙しい朝でもサッと飲める瓶タイプ。</p>
+        <div class="product-price" data-single="3980" data-sub="3383">
+          <span class="price-value">¥3,980</span><span class="price-unit">/ 10本入り</span>
+        </div>
+        <div class="plan-toggle" role="group" aria-label="購入プラン">
+          <button class="plan-btn active" data-plan="single">単品購入</button>
+          <button class="plan-btn" data-plan="sub">定期コース（15%OFF）</button>
+        </div>
+        <button class="btn btn-primary add-cart-btn">カートに入れる</button>
+      </article>
+
+      <article class="product-card" data-category="night" id="night">
+        <div class="product-badge">夜の休息に</div>
+        <div class="product-visual"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="#2c2440" stroke="#c9a227" stroke-width="3"/><text x="50" y="56" text-anchor="middle" font-family="serif" font-size="14" fill="#e8d9a0">夜用</text></svg></div>
+        <h3>和漢養寿 ナイト&amp;リカバリー</h3>
+        <p class="product-desc">一日の疲れをいたわる夜専用ブレンド。眠りの質にこだわる方へ。</p>
+        <div class="product-price" data-single="5480" data-sub="4658">
+          <span class="price-value">¥5,480</span><span class="price-unit">/ 30粒</span>
+        </div>
+        <div class="plan-toggle" role="group" aria-label="購入プラン">
+          <button class="plan-btn active" data-plan="single">単品購入</button>
+          <button class="plan-btn" data-plan="sub">定期コース（15%OFF）</button>
+        </div>
+        <button class="btn btn-primary add-cart-btn">カートに入れる</button>
+      </article>
+
+      <article class="product-card" data-category="caffeine-free" id="caffeine-free">
+        <div class="product-badge">やさしい処方</div>
+        <div class="product-visual"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="#eef3e6" stroke="#9cae6b" stroke-width="3"/><text x="50" y="56" text-anchor="middle" font-family="serif" font-size="12" fill="#5b7a45">やさしい</text></svg></div>
+        <h3>和漢養寿 やさしいサポート</h3>
+        <p class="product-desc">カフェインフリー・低刺激処方。妊娠中の方やお子さまにも配慮した設計。</p>
+        <div class="product-price" data-single="4580" data-sub="3893">
+          <span class="price-value">¥4,580</span><span class="price-unit">/ 30粒</span>
+        </div>
+        <div class="plan-toggle" role="group" aria-label="購入プラン">
+          <button class="plan-btn active" data-plan="single">単品購入</button>
+          <button class="plan-btn" data-plan="sub">定期コース（15%OFF）</button>
+        </div>
+        <button class="btn btn-primary add-cart-btn">カートに入れる</button>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ お客様の声 ============ -->
+<section class="testimonials-section">
+  <div class="container">
+    <p class="section-eyebrow">ご愛飲者の声</p>
+    <h2 class="section-title">続けている方の、リアルな実感</h2>
+
+    <div class="testimonial-carousel" id="testimonial-carousel">
+      <div class="testimonial-track" id="testimonial-track">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>「冷えが気になって始めましたが、半年続けたら朝の重さが減った気がします。粒も小さくて続けやすいです。」</p>
+          <p class="testimonial-name">K.T様・48歳・女性</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>「胃腸が弱く食欲が落ちがちでしたが、ドリンクタイプを朝の習慣にしてから食事が楽しみになりました。」</p>
+          <p class="testimonial-name">M.S様・55歳・男性</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★☆</div>
+          <p>「定期コースで自動的に届くので続けやすい。ナイトタイプは寝る前のお守りのような存在です。」</p>
+          <p class="testimonial-name">A.N様・39歳・女性</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>「術後の体力づくりに勧められて開始。無理なく続けられる味と粒の大きさが気に入っています。」</p>
+          <p class="testimonial-name">Y.H様・62歳・男性</p>
+        </div>
+      </div>
+      <button class="carousel-arrow prev" id="carousel-prev" aria-label="前へ">‹</button>
+      <button class="carousel-arrow next" id="carousel-next" aria-label="次へ">›</button>
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 定期コース ============ -->
+<section class="subscription-section" id="subscription">
+  <div class="container">
+    <p class="section-eyebrow">定期お届けコース</p>
+    <h2 class="section-title">続けるほど、お得に・らくに。</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr><th></th><th>単品購入</th><th class="highlight-col">定期お届けコース</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>価格</td><td>通常価格</td><td class="highlight-col">いつでも15%OFF</td></tr>
+        <tr><td>配送料</td><td>有料（地域による）</td><td class="highlight-col">全国送料無料</td></tr>
+        <tr><td>お届け周期</td><td>都度ご注文</td><td class="highlight-col">毎月自動でお届け・周期変更も自由</td></tr>
+        <tr><td>解約・休止</td><td>―</td><td class="highlight-col">次回お届けの7日前までならいつでも変更・解約OK</td></tr>
+      </tbody>
+    </table>
+    <div class="subscription-cta">
+      <a href="#products" class="btn btn-primary btn-lg">定期コースで申し込む</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 摂り方ガイド ============ -->
+<section class="howto-section">
+  <div class="container">
+    <p class="section-eyebrow">召し上がり方</p>
+    <h2 class="section-title">続けやすい、3つのとり方</h2>
+
+    <div class="howto-tabs" id="howto-tabs" role="tablist">
+      <button class="howto-tab active" data-howto="plain">そのまま</button>
+      <button class="howto-tab" data-howto="hot">お湯・ホットで</button>
+      <button class="howto-tab" data-howto="smoothie">スムージー・ヨーグルトに</button>
+    </div>
+
+    <div class="howto-panels">
+      <div class="howto-panel active" data-howto-panel="plain">
+        <p>水またはお水と一緒に、1日の決まったタイミングで。粒タイプは朝食後、ドリンクタイプは起床後すぐがおすすめです。最も生薬の風味を感じやすい、シンプルな摂り方です。</p>
+      </div>
+      <div class="howto-panel" data-howto-panel="hot">
+        <p>ドリンクタイプはお湯で割って、ホットでも。冷えが気になる季節には、体を内側からじんわり温める一杯としてお楽しみいただけます。</p>
+      </div>
+      <div class="howto-panel" data-howto-panel="smoothie">
+        <p>粒タイプを潰してヨーグルトやスムージーに混ぜれば、毎日の食習慣の中に無理なく取り入れられます。お子さまと一緒に楽しみたい方にもおすすめです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <p class="section-eyebrow">よくある質問</p>
+    <h2 class="section-title">ご購入前によくいただくご質問</h2>
+
+    <div class="faq-list" id="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">いつ飲むのが効果的ですか？</button>
+        <div class="faq-answer"><p>毎日同じタイミングで続けていただくことが大切です。朝食後や起床後など、ご自身が続けやすい時間帯をおすすめしています。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">他の薬と一緒に飲んでも大丈夫ですか？</button>
+        <div class="faq-answer"><p>持病やお薬を服用中の方は、念のためかかりつけの医師・薬剤師にご相談の上でお召しいただくことをおすすめします。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">定期コースはいつでも解約できますか？</button>
+        <div class="faq-answer"><p>はい。次回お届けの7日前までにマイページまたはお電話にてご連絡いただければ、いつでも休止・解約が可能です。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">妊娠中・授乳中でも飲めますか？</button>
+        <div class="faq-answer"><p>「やさしいサポート」シリーズはカフェインフリー・低刺激処方ですが、念のため事前に医師にご相談の上でのご利用をおすすめします。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">効果を感じるまでどれくらいかかりますか？</button>
+        <div class="faq-answer"><p>体質や生活習慣により異なりますが、まずは3ヶ月程度を目安に、毎日続けていただくことをおすすめしています。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 最終CTA ============ -->
+<section class="final-cta">
+  <div class="container">
+    <h2>今日からはじめる、和漢のある暮らし。</h2>
+    <p>初回限定・送料無料のお試しセットで、和漢養寿堂をはじめてみませんか。</p>
+    <a href="#products" class="btn btn-primary btn-lg">お試しセットを申し込む</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ フッター ============ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <span class="logo-text footer-logo">和漢養寿堂</span>
+      <p>創業の知恵を、毎日のひとさじに。和漢生薬のチカラで、なんとなくの不調にそっと寄り添うDtoCブランドです。</p>
+    </div>
+    <div class="footer-col">
+      <h4>商品について</h4>
+      <a href="#products">商品一覧</a>
+      <a href="#subscription">定期コース</a>
+      <a href="#check">体質チェック</a>
+    </div>
+    <div class="footer-col">
+      <h4>サポート</h4>
+      <a href="#faq">よくある質問</a>
+      <a href="#">お問い合わせ</a>
+      <a href="#">特定商取引法に基づく表記</a>
+    </div>
+    <div class="footer-col">
+      <h4>会社情報</h4>
+      <a href="#about">和漢養寿堂について</a>
+      <a href="#">プライバシーポリシー</a>
+      <a href="#">利用規約</a>
+    </div>
+  </div>
+  <p class="footer-copyright">※本サイトはDtoCホームページの動的プロトタイプ（モックアップ）です。掲載の効果効能を示す記述は商品設計の例示であり、実在する効果を保証するものではありません。<br>© 和漢養寿堂 All Rights Reserved.</p>
+</footer>
+
+<!-- ============ モバイル固定CTA ============ -->
+<div class="sticky-cta" id="sticky-cta">
+  <span>初回限定 送料無料</span>
+  <a href="#products" class="btn btn-primary">お試しセットを見る</a>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
