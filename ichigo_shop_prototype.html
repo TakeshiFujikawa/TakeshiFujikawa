@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>紅実園（べにみえん）｜農家直送いちご専門ストア</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap');
+
+:root{
+  --bg:#fff7f6;
+  --card:#ffffff;
+  --ink:#2a1a18;
+  --ink-soft:#7a5f5b;
+  --line:#f3e2df;
+  --red-700:#c23a4a;
+  --red-600:#e0455a;
+  --red-500:#ec5d6f;
+  --red-100:#fde3e6;
+  --red-50:#fff1f2;
+  --green-700:#3d6b4a;
+  --green-100:#e6f3e8;
+  --gold-600:#cf9a32;
+  --radius-xl:26px;
+  --radius-lg:18px;
+  --radius-md:14px;
+  --radius-sm:10px;
+  --shadow-card:0 1px 2px rgba(40,10,10,0.04),0 14px 28px -14px rgba(60,10,15,0.18);
+  --shadow-float:0 18px 38px -12px rgba(60,10,15,0.32);
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP","Inter",sans-serif;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.wrap{max-width:480px;margin:0 auto;min-height:100vh;background:var(--bg);position:relative;padding-bottom:96px;}
+
+/* header */
+.header{position:sticky;top:0;z-index:30;background:rgba(255,247,246,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px;letter-spacing:.02em;}
+.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--red-600);}
+.cart-btn{position:relative;width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;}
+.cart-badge{position:absolute;top:-4px;right:-4px;background:var(--red-600);color:#fff;font-size:10px;font-weight:700;min-width:17px;height:17px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px;}
+
+/* hero */
+.hero{padding:22px 18px 8px;}
+.hero-card{border-radius:var(--radius-xl);background:linear-gradient(160deg,var(--red-600),var(--red-700));color:#fff;padding:22px 20px;box-shadow:var(--shadow-card);position:relative;overflow:hidden;}
+.hero-card::after{content:"🍓";position:absolute;right:-10px;bottom:-20px;font-size:110px;opacity:.18;}
+.hero-eyebrow{font-size:11px;letter-spacing:.12em;opacity:.85;font-weight:600;}
+.hero-title{font-size:21px;font-weight:800;margin:6px 0 4px;line-height:1.4;}
+.hero-sub{font-size:12.5px;opacity:.9;line-height:1.6;}
+.hero-tags{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap;}
+.tag{font-size:10.5px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.3);border-radius:20px;padding:4px 10px;font-weight:600;}
+
+/* section title */
+.section-title{padding:20px 18px 8px;display:flex;align-items:baseline;justify-content:space-between;}
+.section-title h2{font-size:15.5px;font-weight:800;margin:0;}
+.section-title span{font-size:11.5px;color:var(--ink-soft);}
+
+/* product list */
+.products{padding:0 14px;display:flex;flex-direction:column;gap:12px;}
+.pcard{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:12px;box-shadow:var(--shadow-card);cursor:pointer;transition:transform .15s ease;}
+.pcard:active{transform:scale(0.98);}
+.pimg{width:78px;height:78px;border-radius:var(--radius-md);flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:34px;}
+.pinfo{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:3px;}
+.pname{font-size:14.5px;font-weight:700;}
+.pname small{font-size:11px;color:var(--ink-soft);font-weight:500;display:block;margin-top:1px;}
+.pmeta{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px;}
+.pmeta span{font-size:10px;background:var(--green-100);color:var(--green-700);border-radius:8px;padding:2px 7px;font-weight:700;}
+.pfoot{display:flex;align-items:center;justify-content:space-between;margin-top:4px;}
+.pprice{font-size:14px;font-weight:800;color:var(--red-700);}
+.pprice small{font-size:10.5px;color:var(--ink-soft);font-weight:500;}
+.addbtn{width:30px;height:30px;border-radius:50%;background:var(--red-600);color:#fff;border:none;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+
+/* farmer */
+.farmer{margin:18px 14px 0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:16px;display:flex;gap:12px;align-items:center;box-shadow:var(--shadow-card);}
+.farmer .favatar{width:52px;height:52px;border-radius:50%;background:var(--green-100);display:flex;align-items:center;justify-content:center;font-size:24px;flex:0 0 auto;}
+.farmer .ftext{font-size:12px;line-height:1.6;color:var(--ink-soft);}
+.farmer .ftext b{color:var(--ink);font-size:13.5px;}
+
+/* bottom nav (cart bar) */
+.cartbar{position:fixed;left:0;right:0;bottom:0;max-width:480px;margin:0 auto;background:#fff;border-top:1px solid var(--line);padding:10px 14px;display:flex;align-items:center;gap:10px;box-shadow:0 -8px 24px -12px rgba(60,10,15,0.18);z-index:40;}
+.cartbar .ctotal{flex:1;}
+.cartbar .ctotal .l1{font-size:10.5px;color:var(--ink-soft);}
+.cartbar .ctotal .l2{font-size:15px;font-weight:800;color:var(--red-700);}
+.btn-primary{background:var(--red-600);color:#fff;border:none;border-radius:999px;padding:12px 22px;font-size:13.5px;font-weight:700;cursor:pointer;box-shadow:var(--shadow-float);}
+.btn-primary:disabled{opacity:.4;}
+
+/* generic screen / modal sheets */
+.sheet{position:fixed;inset:0;z-index:50;display:none;}
+.sheet.active{display:block;}
+.sheet-backdrop{position:absolute;inset:0;background:rgba(30,10,10,0.45);}
+.sheet-panel{position:absolute;left:0;right:0;bottom:0;max-width:480px;margin:0 auto;background:var(--bg);border-radius:24px 24px 0 0;max-height:92vh;overflow-y:auto;animation:slideUp .25s ease;}
+@keyframes slideUp{from{transform:translateY(30px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.sheet-handle{width:40px;height:4px;background:var(--line);border-radius:3px;margin:10px auto 4px;}
+.sheet-close{position:absolute;top:14px;right:16px;width:32px;height:32px;border-radius:50%;background:#fff;border:1px solid var(--line);font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;}
+
+/* product detail */
+.pd-hero{height:220px;display:flex;align-items:center;justify-content:center;font-size:90px;border-radius:0 0 24px 24px;}
+.pd-body{padding:18px 20px 0;}
+.pd-title{font-size:19px;font-weight:800;}
+.pd-sub{font-size:12.5px;color:var(--ink-soft);margin-top:4px;line-height:1.6;}
+.pd-badges{display:flex;gap:6px;margin:10px 0;flex-wrap:wrap;}
+.pd-price{font-size:21px;font-weight:800;color:var(--red-700);margin:10px 0 2px;}
+.pd-price small{font-size:11px;color:var(--ink-soft);font-weight:500;}
+.pd-desc{font-size:13px;line-height:1.8;color:#4a3633;margin:14px 0;}
+.qty-row{display:flex;align-items:center;gap:14px;margin:14px 0 6px;}
+.qty-box{display:flex;align-items:center;border:1px solid var(--line);border-radius:999px;background:#fff;}
+.qty-box button{width:34px;height:34px;border:none;background:none;font-size:18px;font-weight:700;color:var(--red-600);cursor:pointer;}
+.qty-box span{width:30px;text-align:center;font-weight:700;font-size:14px;}
+.pd-footer{padding:16px 20px 26px;}
+
+/* cart sheet */
+.cart-item{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);}
+.cart-item .ci-img{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex:0 0 auto;}
+.cart-item .ci-name{font-size:13px;font-weight:700;}
+.cart-item .ci-sub{font-size:11px;color:var(--ink-soft);}
+.cart-item .ci-qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:999px;}
+.cart-item .ci-qty button{width:24px;height:24px;border:none;background:none;font-size:14px;cursor:pointer;color:var(--red-600);font-weight:700;}
+.cart-item .ci-qty span{width:20px;text-align:center;font-size:12px;font-weight:700;}
+.cart-item .ci-price{font-size:13px;font-weight:800;color:var(--red-700);min-width:62px;text-align:right;}
+.summary-row{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-soft);padding:5px 0;}
+.summary-row.total{font-size:15px;font-weight:800;color:var(--ink);border-top:1px solid var(--line);margin-top:6px;padding-top:10px;}
+.empty-cart{padding:60px 20px;text-align:center;color:var(--ink-soft);font-size:13px;}
+
+/* form */
+.field{margin:10px 20px;}
+.field label{font-size:11.5px;font-weight:700;color:var(--ink-soft);display:block;margin-bottom:5px;}
+.field input,.field select{width:100%;border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 12px;font-size:13.5px;background:#fff;font-family:inherit;}
+.field-row{display:flex;gap:10px;}
+.field-row .field{flex:1;margin:10px 0;}
+
+/* complete screen */
+.complete{padding:60px 30px;text-align:center;}
+.complete .icon{font-size:54px;}
+.complete h3{font-size:18px;font-weight:800;margin:14px 0 6px;}
+.complete p{font-size:13px;color:var(--ink-soft);line-height:1.7;}
+.order-box{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:16px;margin-top:20px;text-align:left;font-size:12.5px;color:var(--ink-soft);}
+.order-box b{color:var(--ink);}
+
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#2a1a18;color:#fff;font-size:12.5px;font-weight:600;padding:10px 18px;border-radius:999px;z-index:60;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(-6px);}
+
+.footer-note{padding:22px 24px 10px;font-size:11px;color:var(--ink-soft);line-height:1.8;text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+
+  <header class="header">
+    <div class="brand"><span class="dot"></span>紅実園 BENIMIEN</div>
+    <button class="cart-btn" onclick="openCart()">🧺<span class="cart-badge" id="cartBadge" style="display:none">0</span></button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-card">
+      <div class="hero-eyebrow">FARM DIRECT・農家直送</div>
+      <div class="hero-title">朝採れいちごを<br>その日のうちにお届け</div>
+      <div class="hero-sub">栃木・紅実園が育てる5品種のみを限定販売。中間流通を挟まない産地直送のDtoCストアです。</div>
+      <div class="hero-tags">
+        <span class="tag">当日収穫</span>
+        <span class="tag">冷蔵便</span>
+        <span class="tag">農家直送1軒のみ</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-title">
+    <h2>品種一覧（全5種）</h2>
+    <span id="prodCount"></span>
+  </div>
+
+  <div class="products" id="productList"></div>
+
+  <div class="farmer">
+    <div class="favatar">👨‍🌾</div>
+    <div class="ftext"><b>紅実園（栃木県・大田原市）</b><br>三代続くいちご専業農家。すべての商品を自社圃場から直送しています。</div>
+  </div>
+
+  <div class="footer-note">紅実園 直送ストア｜本サイトはプロトタイプです。決済・配送は実際には行われません。</div>
+
+  <div class="cartbar" id="cartbar" style="display:none">
+    <div class="ctotal">
+      <div class="l1">合計（<span id="cbarCount">0</span>点）</div>
+      <div class="l2" id="cbarTotal">¥0</div>
+    </div>
+    <button class="btn-primary" onclick="openCart()">カートを見る</button>
+  </div>
+
+  <!-- Product detail sheet -->
+  <div class="sheet" id="sheetDetail">
+    <div class="sheet-backdrop" onclick="closeSheet('sheetDetail')"></div>
+    <div class="sheet-panel">
+      <button class="sheet-close" onclick="closeSheet('sheetDetail')">✕</button>
+      <div id="pdHero" class="pd-hero"></div>
+      <div class="pd-body" id="pdBody"></div>
+    </div>
+  </div>
+
+  <!-- Cart sheet -->
+  <div class="sheet" id="sheetCart">
+    <div class="sheet-backdrop" onclick="closeSheet('sheetCart')"></div>
+    <div class="sheet-panel">
+      <div class="sheet-handle"></div>
+      <button class="sheet-close" onclick="closeSheet('sheetCart')">✕</button>
+      <div style="padding:18px 20px 6px;font-size:16px;font-weight:800;">カート</div>
+      <div id="cartItems"></div>
+      <div id="cartSummary" style="padding:6px 20px 18px;"></div>
+      <div style="padding:0 20px 26px;">
+        <button class="btn-primary" style="width:100%;" id="toCheckoutBtn" onclick="goCheckout()">レジに進む</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout sheet -->
+  <div class="sheet" id="sheetCheckout">
+    <div class="sheet-backdrop" onclick="closeSheet('sheetCheckout')"></div>
+    <div class="sheet-panel">
+      <div class="sheet-handle"></div>
+      <button class="sheet-close" onclick="closeSheet('sheetCheckout')">✕</button>
+      <div style="padding:18px 20px 0;font-size:16px;font-weight:800;">お届け先・お支払い</div>
+      <div class="field">
+        <label>お名前</label>
+        <input id="ckName" placeholder="山田 花子" value="山田 花子">
+      </div>
+      <div class="field">
+        <label>お届け先住所</label>
+        <input id="ckAddr" placeholder="東京都〇〇区〇〇1-2-3" value="東京都渋谷区代々木1-2-3">
+      </div>
+      <div class="field-row" style="margin:0 20px;">
+        <div class="field">
+          <label>お届け希望日</label>
+          <select id="ckDate"></select>
+        </div>
+        <div class="field">
+          <label>お支払い方法</label>
+          <select id="ckPay">
+            <option>クレジットカード</option>
+            <option>代金引換</option>
+            <option>銀行振込</option>
+          </select>
+        </div>
+      </div>
+      <div style="padding:10px 20px 0;" id="checkoutSummary"></div>
+      <div style="padding:14px 20px 28px;">
+        <button class="btn-primary" style="width:100%;" onclick="placeOrder()">注文を確定する</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Complete sheet -->
+  <div class="sheet" id="sheetComplete">
+    <div class="sheet-backdrop"></div>
+    <div class="sheet-panel">
+      <div class="complete">
+        <div class="icon">🍓✅</div>
+        <h3>ご注文ありがとうございます</h3>
+        <p>紅実園の畑から、新鮮ないちごをお届けします。<br>発送が完了するとメールでご連絡します。</p>
+        <div class="order-box" id="orderBox"></div>
+        <div style="margin-top:22px;">
+          <button class="btn-primary" onclick="finishOrder()">トップに戻る</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script>
+const PRODUCTS = [
+  {id:1, emoji:'🍓', bg:'#ffe1e4', name:'紅ほっぺ', kana:'べにほっぺ', tagline:'濃厚な甘みと酸味のバランス品種', price:1480, unit:'1パック(280g)', tags:['限定数量','贈答向け'], desc:'果肉がしっかりしていて、甘さと酸味のバランスが良い紅実園の看板品種です。表面の艶が強く、贈答用としても人気があります。'},
+  {id:2, emoji:'🍓', bg:'#ffd9df', name:'あまおう', kana:'あまおう', tagline:'大粒・高糖度の人気品種', price:1680, unit:'1パック(280g)', tags:['高糖度','大粒'], desc:'「あかい・まるい・おおきい・うまい」の名を持つ大粒品種。果汁が多く、口に入れた瞬間に広がる甘みが特徴です。'},
+  {id:3, emoji:'🍓', bg:'#ffeaea', name:'とちおとめ', kana:'とちおとめ', tagline:'王道の甘酸っぱさ', price:1280, unit:'1パック(280g)', tags:['定番','日常使い'], desc:'紅実園のある栃木県を代表する品種。甘みと酸味のバランスが取れた、いちごらしい王道の味わいです。'},
+  {id:4, emoji:'🍓', bg:'#ffe6ef', name:'淡雪', kana:'あわゆき', tagline:'希少な白いちご', price:2480, unit:'1パック(200g)', tags:['白いちご','数量限定'], desc:'果肉まで白く、ミルキーな甘さが特徴の希少品種。栽培数が少なく、紅実園でも数量限定での販売となります。'},
+  {id:5, emoji:'🍓', bg:'#ffdbe2', name:'紅クイーン', kana:'べにくいーん', tagline:'濃赤色・芳醇な香り', price:1580, unit:'1パック(280g)', tags:['芳醇な香り','濃赤色'], desc:'深い赤色と立ち上る芳醇な香りが特徴の品種。完熟した状態で収穫し、その日のうちに発送します。'}
+];
+
+let cart = {}; // id -> qty
+
+function yen(n){ return '¥' + n.toLocaleString(); }
+
+function renderProducts(){
+  document.getElementById('prodCount').textContent = PRODUCTS.length + '品種';
+  const list = document.getElementById('productList');
+  list.innerHTML = PRODUCTS.map(p => `
+    <div class="pcard" onclick="openDetail(${p.id})">
+      <div class="pimg" style="background:${p.bg}">${p.emoji}</div>
+      <div class="pinfo">
+        <div class="pname">${p.name}<small>${p.tagline}</small></div>
+        <div class="pmeta">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+        <div class="pfoot">
+          <div class="pprice">${yen(p.price)} <small>/ ${p.unit}</small></div>
+          <button class="addbtn" onclick="event.stopPropagation(); addToCart(${p.id},1); toast('${p.name}をカートに追加しました');">＋</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openSheet(id){ document.getElementById(id).classList.add('active'); document.body.style.overflow='hidden'; }
+function closeSheet(id){ document.getElementById(id).classList.remove('active'); document.body.style.overflow=''; }
+
+let currentDetailId = null;
+function openDetail(id){
+  const p = PRODUCTS.find(x=>x.id===id);
+  currentDetailId = id;
+  document.getElementById('pdHero').style.background = p.bg;
+  document.getElementById('pdHero').textContent = p.emoji;
+  const qty = cart[id] || 1;
+  document.getElementById('pdBody').innerHTML = `
+    <div class="pd-title">${p.name}<span style="font-size:12px;color:var(--ink-soft);font-weight:500;"> ／ ${p.kana}</span></div>
+    <div class="pd-sub">${p.tagline}</div>
+    <div class="pd-badges">${p.tags.map(t=>`<span class="tag" style="background:var(--green-100);color:var(--green-700);border:none;">${t}</span>`).join('')}</div>
+    <div class="pd-price">${yen(p.price)}<small> / ${p.unit}</small></div>
+    <div class="pd-desc">${p.desc}<br><br>紅実園で当日収穫したものを、冷蔵便にてお届けします。</div>
+    <div class="qty-row">
+      <span style="font-size:12.5px;font-weight:700;color:var(--ink-soft);">数量</span>
+      <div class="qty-box">
+        <button onclick="stepDetailQty(-1)">－</button>
+        <span id="pdQty">1</span>
+        <button onclick="stepDetailQty(1)">＋</button>
+      </div>
+    </div>
+    <div class="pd-footer" style="padding:0;margin-top:10px;">
+      <button class="btn-primary" style="width:100%;" onclick="addFromDetail()">カートに追加</button>
+    </div>
+  `;
+  openSheet('sheetDetail');
+}
+function stepDetailQty(d){
+  const el = document.getElementById('pdQty');
+  let v = parseInt(el.textContent) + d;
+  if(v<1) v=1;
+  el.textContent = v;
+}
+function addFromDetail(){
+  const q = parseInt(document.getElementById('pdQty').textContent);
+  addToCart(currentDetailId, q);
+  closeSheet('sheetDetail');
+  toast(PRODUCTS.find(p=>p.id===currentDetailId).name + 'をカートに追加しました');
+}
+
+function addToCart(id, q){
+  cart[id] = (cart[id]||0) + q;
+  updateCartBar();
+}
+function setQty(id, q){
+  if(q<=0){ delete cart[id]; } else { cart[id]=q; }
+  updateCartBar();
+  renderCart();
+}
+function cartTotalQty(){ return Object.values(cart).reduce((a,b)=>a+b,0); }
+function cartTotalPrice(){ return Object.entries(cart).reduce((sum,[id,q])=> sum + PRODUCTS.find(p=>p.id==id).price*q, 0); }
+
+function updateCartBar(){
+  const n = cartTotalQty();
+  const badge = document.getElementById('cartBadge');
+  const bar = document.getElementById('cartbar');
+  if(n>0){
+    badge.style.display='flex'; badge.textContent=n;
+    bar.style.display='flex';
+    document.getElementById('cbarCount').textContent = n;
+    document.getElementById('cbarTotal').textContent = yen(cartTotalPrice());
+  } else {
+    badge.style.display='none';
+    bar.style.display='none';
+  }
+}
+
+function renderCart(){
+  const wrap = document.getElementById('cartItems');
+  const entries = Object.entries(cart);
+  if(entries.length===0){
+    wrap.innerHTML = '<div class="empty-cart">🍓<br>カートはまだ空です</div>';
+    document.getElementById('cartSummary').innerHTML='';
+    document.getElementById('toCheckoutBtn').disabled = true;
+    return;
+  }
+  document.getElementById('toCheckoutBtn').disabled = false;
+  wrap.innerHTML = '<div style="padding:0 20px;">' + entries.map(([id,q])=>{
+    const p = PRODUCTS.find(x=>x.id==id);
+    return `
+      <div class="cart-item">
+        <div class="ci-img" style="background:${p.bg}">${p.emoji}</div>
+        <div style="flex:1;">
+          <div class="ci-name">${p.name}</div>
+          <div class="ci-sub">${yen(p.price)} / ${p.unit}</div>
+        </div>
+        <div class="ci-qty">
+          <button onclick="setQty(${p.id}, ${q-1})">－</button>
+          <span>${q}</span>
+          <button onclick="setQty(${p.id}, ${q+1})">＋</button>
+        </div>
+        <div class="ci-price">${yen(p.price*q)}</div>
+      </div>`;
+  }).join('') + '</div>';
+
+  const subtotal = cartTotalPrice();
+  const shipping = subtotal >= 4000 ? 0 : 600;
+  const total = subtotal + shipping;
+  document.getElementById('cartSummary').innerHTML = `
+    <div class="summary-row"><span>小計</span><span>${yen(subtotal)}</span></div>
+    <div class="summary-row"><span>配送料${subtotal>=4000?'（¥4,000以上で無料）':''}</span><span>${shipping===0?'無料':yen(shipping)}</span></div>
+    <div class="summary-row total"><span>合計</span><span>${yen(total)}</span></div>
+  `;
+}
+
+function openCart(){ renderCart(); openSheet('sheetCart'); }
+
+function goCheckout(){
+  if(cartTotalQty()===0) return;
+  closeSheet('sheetCart');
+  populateDates();
+  renderCheckoutSummary();
+  openSheet('sheetCheckout');
+}
+
+function populateDates(){
+  const sel = document.getElementById('ckDate');
+  if(sel.options.length) return;
+  const today = new Date();
+  const opts = [];
+  for(let i=2;i<=8;i++){
+    const d = new Date(today.getTime() + i*86400000);
+    const label = `${d.getMonth()+1}月${d.getDate()}日（${'日月火水木金土'[d.getDay()]}）`;
+    opts.push(`<option>${label}</option>`);
+  }
+  sel.innerHTML = opts.join('');
+}
+
+function renderCheckoutSummary(){
+  const subtotal = cartTotalPrice();
+  const shipping = subtotal >= 4000 ? 0 : 600;
+  document.getElementById('checkoutSummary').innerHTML = `
+    <div class="summary-row"><span>商品合計（${cartTotalQty()}点）</span><span>${yen(subtotal)}</span></div>
+    <div class="summary-row"><span>配送料</span><span>${shipping===0?'無料':yen(shipping)}</span></div>
+    <div class="summary-row total"><span>お支払い合計</span><span>${yen(subtotal+shipping)}</span></div>
+  `;
+}
+
+function placeOrder(){
+  const name = document.getElementById('ckName').value.trim() || 'お客様';
+  const addr = document.getElementById('ckAddr').value.trim() || '-';
+  const date = document.getElementById('ckDate').value;
+  const pay = document.getElementById('ckPay').value;
+  const orderNo = 'BM' + Math.floor(100000 + Math.random()*900000);
+  document.getElementById('orderBox').innerHTML = `
+    <div><b>注文番号</b>：${orderNo}</div>
+    <div style="margin-top:6px;"><b>お届け先</b>：${name} 様 / ${addr}</div>
+    <div style="margin-top:6px;"><b>お届け予定日</b>：${date}</div>
+    <div style="margin-top:6px;"><b>お支払い方法</b>：${pay}</div>
+    <div style="margin-top:6px;"><b>お支払い合計</b>：${yen(cartTotalPrice() + (cartTotalPrice()>=4000?0:600))}</div>
+  `;
+  cart = {};
+  updateCartBar();
+  closeSheet('sheetCheckout');
+  openSheet('sheetComplete');
+}
+
+function finishOrder(){
+  closeSheet('sheetComplete');
+}
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(()=>t.classList.remove('show'), 1800);
+}
+
+renderProducts();
+</script>
+</body>
+</html>
